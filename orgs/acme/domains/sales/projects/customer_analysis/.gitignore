@@ -130,30 +130,3 @@ dmypy.json
 
 # VS Code
 .markdownlint.json
-.vscode/
-
-# macOS
-.DS_Store
-
-.databricks
-
-# Terraform
-**/.terraform/*
-*.tfvars
-*.tfvars.json
-!*.auto.tfvars
-credentials.auto.tfvars
-!*.env.tfvars
-*.tfstate
-*.tfstate.*
-override.tf
-override.tf.json
-*_override.tf
-*_override.tf.json
-# Include override files you do want to add to version control using negated pattern
-# !example_override.tf
-# Include tfplan files to ignore the plan output of the command: terraform plan -out=tfplan
-# example: *tfplan*
-# Ignore CLI configuration files
-.terraformrc
-terraform.rc
