@@ -1,33 +1,7 @@
 # Databricks notebook source
-# COMMAND ----------
-
 # MAGIC %md
 # MAGIC ## Create the revenue data product
 # MAGIC #
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC ## Show a few records
-
-# COMMAND ----------
-
-trips_df = spark.sql(
-    "select * from training.taxinyc_trips.yellow_taxi_trips_curated_sample"
-)
-trips_df.display()
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC
-# MAGIC ### 2. Revenue sum by pickup_borough
-# MAGIC
-# MAGIC `total_amount` is the revenue for a trip.
-# MAGIC
-# MAGIC Sort by pickup_borough ascending.
-# MAGIC
-# MAGIC To sort / order by, use `.sort(F.col("col_name").asc())`.
 
 # COMMAND ----------
 
@@ -43,6 +17,28 @@ uname = username(dbutils)
 
 # COMMAND ----------
 
+# MAGIC %md
+# MAGIC #### Show a few records of input dataset
+
+# COMMAND ----------
+
+trips_df = spark.sql(
+    "select * from training.taxinyc_trips.yellow_taxi_trips_curated_sample"
+)
+trips_df.display()
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC
+# MAGIC ### Revenue sum by pickup_borough
+# MAGIC
+# MAGIC `total_amount` is the revenue for a trip.
+# MAGIC
+# MAGIC Sort by pickup_borough ascending.
+
+# COMMAND ----------
+
 revenue_by_borough_df = (
     trips_df.groupBy("pickup_borough")
     .agg(F.sum("total_amount"))
@@ -53,15 +49,15 @@ revenue_by_borough_df.display()
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC % # Write dataset
+# MAGIC ## Write dataset
 
 # COMMAND ----------
 
-# acme/domains/transport/projects/taxinyc
+catalog = catname_from_path()
+print(f"catalog: {catalog}")
 
-# catalog = catname(org="acme",
-#                   domain="transport",
-#                   project="taxinyc")
+# COMMAND ----------
+
 catalog = catname_from_path()
 print("catalog: {catalog}")
 revenue_by_borough_tbl = tblname(cat=catalog, db="revenue", tbl="revenue_by_borough")
