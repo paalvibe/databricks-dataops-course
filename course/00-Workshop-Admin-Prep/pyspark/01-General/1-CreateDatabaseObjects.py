@@ -31,8 +31,8 @@
 
 # COMMAND ----------
 
-TODO: set groupname as name of the group of users doing the workshop
-groupname = "workshop-groupname"
+# TODO: set groupname as name of the group of users doing the workshop
+groupname = "dataops-workshop"
 
 # COMMAND ----------
 
@@ -81,9 +81,8 @@ spark.sql(f"GRANT WRITE VOLUME ON VOLUME training.data.crimes TO `{groupname}`")
 
 # COMMAND ----------
 
-# MAGIC %sql
-# MAGIC GRANT SELECT ON ANY FILE TO `users`;
-# MAGIC GRANT MODIFY ON ANY FILE TO `users`;
+spark.sql(f"GRANT SELECT ON ANY FILE TO `users`")
+spark.sql(f"GRANT MODIFY ON ANY FILE TO `users`")
 
 # COMMAND ----------
 
