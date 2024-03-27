@@ -10,7 +10,7 @@ def username(dbutils):
     return name
 
 
-def tblname(
+def catname_from_path(
 *, 
 tbl,
 db="nyc_workshop",

@@ -101,6 +101,15 @@ curatedDFConformed = (
 )
 
 # COMMAND ----------
+# Make a dataset with 10% of the data
+(curatedDFConformed
+.coalesce(15).write.sample(fraction=0.1)
+.partitionBy("trip_year", "trip_month")  # partition makes consumption more efficient
+.mode("overwrite").format("delta")
+.saveAsTable("training.taxinyc_trips.yellow_taxi_trips_curated_sample")
+)
+
+# COMMAND ----------
 
 # MAGIC %md
 # MAGIC ### 3.  Explore
