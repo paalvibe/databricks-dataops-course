@@ -31,7 +31,7 @@
 
 # COMMAND ----------
 
-# TODO: set groupname as name of the group of users doing the workshop
+# Set groupname as name of the group of users doing the workshop
 groupname = "dataops-workshop"
 
 # COMMAND ----------
@@ -83,6 +83,18 @@ spark.sql(f"GRANT WRITE VOLUME ON VOLUME training.data.crimes TO `{groupname}`")
 
 spark.sql(f"GRANT SELECT ON ANY FILE TO `users`")
 spark.sql(f"GRANT MODIFY ON ANY FILE TO `users`")
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC
+# MAGIC ## Setup domain catalog
+
+# COMMAND ----------
+
+domain_catalog = "acme_transport_taxinyc"
+spark.sql(f"CREATE CATALOG IF NOT EXISTS {domain_catalog}")
+spark.sql(f"GRANT CREATE SCHEMA ON CATALOG {domain_catalog} TO `{groupname}`")
 
 # COMMAND ----------
 
