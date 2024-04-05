@@ -1,16 +1,8 @@
 # Databricks notebook source
 # MAGIC %md
 # MAGIC
-# MAGIC # Redeploy
+# MAGIC # Deploy prod job
 # MAGIC
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC
-# MAGIC ## Task change the name of one of the output data sets
-# MAGIC
-# MAGIC One way is to use the `alias()` function in pyspark for renaming.
 
 # COMMAND ----------
 
@@ -23,22 +15,21 @@
 
 # MAGIC %md
 # MAGIC
-# MAGIC Go to the notebook orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue/deploy, and run the autojob cell again.
+# MAGIC Go to the notebook orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue/deploy, and go to the run prod job cell.
 # MAGIC
-# MAGIC Note that the output will say `Resetting job` instead of `Creating job`.
+# MAGIC Run the cell with autojob() with env="prod"
 # MAGIC
-# MAGIC Look in the Workflows page. The job should be there still, but it has been updated.
-# MAGIC
-# MAGIC Notice that the code that is being deployed is the code in git, not the state of the code in your repo, so your output data does not reflect the changes.
+# MAGIC The run the job with the python function.
 
 # COMMAND ----------
 
 # MAGIC %md
 # MAGIC
-# MAGIC ## Task: Redeploy with new commit
+# MAGIC ## Task: Study the name of the prod job and prod output data
 # MAGIC
-# MAGIC Do a commit and run the autodeploy() fn again.
-# MAGIC Check the result under Workflows. Why is there a new job created?
+# MAGIC Ideally, the data should be written to a schema without prefix, since it is production. But we are working on the implementation. Trying to solve how to pickup up env vars signalling pipeline env prod vs dev.
+# MAGIC
+# MAGIC Which cluster did the job run on?
 
 # COMMAND ----------
 
