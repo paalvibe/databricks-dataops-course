@@ -38,6 +38,9 @@ from libs.catname import catname_from_path
 
 cat = catname_from_path()
 db = dbname(db="revenue", cat=cat)
+print("New db name: " + db)
+spark.sql(f"USE catalog {cat}")
+spark.sql(f"CREATE DATABASE IF NOT EXISTS {db}")
 volume = "static_data"
 spark.sql(f"CREATE VOLUME IF NOT EXISTS {db}.{volume}")
 

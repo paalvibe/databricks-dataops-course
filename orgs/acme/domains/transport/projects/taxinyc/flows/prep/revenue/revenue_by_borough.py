@@ -16,6 +16,15 @@ from pyspark.sql import functions as F
 # Name functions enables automatic env+user specific database naming
 from libs.tblname import tblname
 from libs.catname import catname_from_path
+from libs.dbname import dbname
+
+# COMMAND ----------
+
+cat = catname_from_path()
+db = dbname(db="revenue", cat=cat)
+print("New db name: " + db)
+spark.sql(f"USE catalog {cat}")
+spark.sql(f"CREATE DATABASE IF NOT EXISTS {db}")
 
 # COMMAND ----------
 
