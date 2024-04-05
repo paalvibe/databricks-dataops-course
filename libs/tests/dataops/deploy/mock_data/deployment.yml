@@ -1,0 +1,31 @@
+# This is where to define jobs and tasks for
+# this flow (pipeline).
+#
+# The structure somewhat follows the Jobs API
+# and the Delta Live Tables API for jobs and
+# pipelines respectively.
+#
+# Jobs API: https://docs.databricks.com/dev-tools/api/latest/jobs.html
+# Delta Live Tables API: https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html
+
+---
+schedule:
+  quartz_cron_expression: "27 0 16 ? * Thu"
+  timezone_id: Europe/Brussels
+  pause_status: UNPAUSED
+tasks:
+- task_key: revenue_by_borough
+  run_if: ALL_SUCCESS
+  job_cluster_key: common-job-cluster
+- task_key: revenue_by_tripmonth
+  run_if: ALL_SUCCESS
+  job_cluster_key: common-job-cluster
+- task_key: borough_population
+  run_if: ALL_SUCCESS
+  job_cluster_key: common-job-cluster
+- task_key: revenue_by_inhabitant
+  depends_on:
+  - task_key: revenue_by_borough
+  - task_key: borough_population
+  job_cluster_key: common-job-cluster
+  run_if: ALL_SUCCESS

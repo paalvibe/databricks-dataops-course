@@ -6,6 +6,10 @@ name = "pypi"
 [packages]
 
 [dev-packages]
+pytest = "*"
+pyspark = "*"
+requests = "*"
+pyyaml = "*"
 
 [requires]
 python_version = "3.10"

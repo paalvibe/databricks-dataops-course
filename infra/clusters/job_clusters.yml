@@ -1,0 +1,12 @@
+job_clusters:
+- job_cluster_key: common-job-cluster
+  new_cluster:
+    cluster_name: ''
+    spark_version: 14.1.x-scala2.12
+    aws_attributes:
+      availability: SPOT_WITH_FALLBACK
+      zone_id: eu-west-1b
+    node_type_id: i3.xlarge
+    enable_elastic_disk: false
+    data_security_mode: SINGLE_USER
+    num_workers: 1
