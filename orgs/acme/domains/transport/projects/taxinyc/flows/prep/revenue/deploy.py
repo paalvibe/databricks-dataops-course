@@ -5,32 +5,32 @@
 
 # COMMAND ----------
 
-# MAGIC %load_ext autoreload
-# MAGIC %autoreload 2
-
-# COMMAND ----------
-
 !pip install pyyaml
-
-# COMMAND ----------
-
-from libs.dataops.deploy.autojob import autojob
-# Deploy jobs based on deployment.yml, in dev mode
-response = autojob(env="dev")
-
-# COMMAND ----------
-
-response
 
 # COMMAND ----------
 
 # MAGIC %md
 # MAGIC
-# MAGIC ## Task: Run job with python code, instead of UI
+# MAGIC ### Import libs
+
+# COMMAND ----------
+
+# Enable live reloading of libs, not needed now
+# %load_ext autoreload
+# %autoreload 2
 
 # COMMAND ----------
 
 import requests
+from libs.dataops.deploy.autojob import autojob
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC
+# MAGIC ## Define function  for running a job
+
+# COMMAND ----------
 
 def run_job(*, dbutils, job_id):
     """Run job now"""
@@ -45,11 +45,28 @@ def run_job(*, dbutils, job_id):
 
 # COMMAND ----------
 
-run_job(dbutils=dbutils, job_id=response['response']['job_id'])
+# MAGIC %md
+# MAGIC
+# MAGIC ### Create dev job
 
 # COMMAND ----------
 
+# Deploy jobs based on deployment.yml, in dev mode
+response = autojob(env="dev")
 
+# COMMAND ----------
+
+response
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC
+# MAGIC ### Run job with python code
+
+# COMMAND ----------
+
+run_job(dbutils=dbutils, job_id=response['response']['job_id'])
 
 # COMMAND ----------
 
@@ -60,10 +77,9 @@ run_job(dbutils=dbutils, job_id=response['response']['job_id'])
 
 # COMMAND ----------
 
-from libs.dataops.deploy.autojob import autojob
-os.environ['PIPELINE_ENV'] = 'prod'
-# Deploy jobs based on deployment.yml, in dev mode
-prod_response = autojob(env="prod")
+# os.environ['PIPELINE_ENV'] = 'prod'
+# # Deploy jobs based on deployment.yml, in dev mode
+# prod_response = autojob(env="prod")
 
 # COMMAND ----------
 
@@ -73,19 +89,4 @@ prod_response = autojob(env="prod")
 
 # COMMAND ----------
 
-run_job(dbutils=dbutils, job_id=prod_response['response']['job_id'])
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC
-# MAGIC # Notes, scratchbook
-
-# COMMAND ----------
-
-# from libs.dbname import dbname
-# from libs.tblname import tblname
-# from libs.catname import catname_from_path
-# cat = catname_from_path()
-# db = dbname(db="revenue", cat=cat)
-# db
+# run_job(dbutils=dbutils, job_id=prod_response['response']['job_id'])
