@@ -12,6 +12,7 @@ def defaultconfig():
         "git_source": {
         },
         "parameters": [
+            "jobparamfoo": "bar"
         ],
         "run_as": {
         }
