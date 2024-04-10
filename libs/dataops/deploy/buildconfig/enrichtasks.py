@@ -15,7 +15,7 @@ def enrich_tasks(*, cfg, dbutils, env):
                 "notebook_path": f"{base_nb_path}/{task_key}",
                 "source": "GIT",
                 "base_parameters": {
-                    "taskparamfoo": "bar"
+                    "taskparamfoo": "bar",
                 },
             }
             # Either a job_cluster_key or an existing_cluster_id
