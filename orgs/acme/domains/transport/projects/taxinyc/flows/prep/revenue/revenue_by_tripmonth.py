@@ -10,8 +10,7 @@
 
 # COMMAND ----------
 
-jobparamfoo = dbutils.widgets.get("jobparamfoo")
-print(f"jobparamfoo: {jobparamfoo}")
+
 
 # COMMAND ----------
 

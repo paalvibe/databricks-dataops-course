@@ -26,6 +26,8 @@ def dbname(
 
 
 def dbprefix(*, env, dbutils):
+    jobparamfoo = dbutils.widgets.get("jobparamfoo")
+    print(f"autojob: jobparamfoo: {jobparamfoo}")
     return _depname(dbutils=dbutils, env=env)
 
 
