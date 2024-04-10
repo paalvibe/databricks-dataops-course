@@ -12,7 +12,7 @@
 
 dbutils.widgets.text("jobparamfoo", "lee")
 jobparamfoo = dbutils.widgets.get("jobparamfoo")
-print("jobparamfoo: {jobparamfoo}")
+print(f"jobparamfoo: {jobparamfoo}")
 
 # COMMAND ----------
 
