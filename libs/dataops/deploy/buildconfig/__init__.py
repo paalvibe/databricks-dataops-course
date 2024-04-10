@@ -10,6 +10,12 @@ def buildconfig(*, cfg, job_name, depname, env, dbutils):
     full_cfg.update(cfg)
     full_cfg["name"] = job_name
     full_cfg["tags"] = _tags(cfg=cfg, depname=depname, env=env)
+    full_cfg["parameters"] = [
+        {
+            "name": "pipeline_env",
+            "default": env,
+        }
+    ]
     full_cfg = enrich_tasks(cfg=full_cfg, env=env, dbutils=dbutils)
     # Get list of clusters used by tasks
     used_clusters = full_cfg.pop("_used_clusters", {})
