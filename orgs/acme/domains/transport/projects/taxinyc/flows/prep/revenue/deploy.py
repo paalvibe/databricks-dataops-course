@@ -16,8 +16,8 @@
 # COMMAND ----------
 
 # Enable live reloading of libs, not needed now
-# %load_ext autoreload
-# %autoreload 2
+%load_ext autoreload
+%autoreload 2
 
 # COMMAND ----------
 
@@ -67,6 +67,18 @@ response
 # COMMAND ----------
 
 run_job(dbutils=dbutils, job_id=response['response']['job_id'])
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC
+# MAGIC # Experimental code
+
+# COMMAND ----------
+
+# from libs.dataops.deploy.autojob import autojob
+# response = autojob(env="dev")
+# run_job(dbutils=dbutils, job_id=response['response']['job_id'])
 
 # COMMAND ----------
 

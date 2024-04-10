@@ -10,6 +10,16 @@
 
 # COMMAND ----------
 
+context_str = dbutils.notebook.entry_point.getDbutils().notebook().getContext().toJson()
+context = json.loads(context_str)
+run_id_obj = context.get('currentRunId', {})
+run_id = run_id_obj.get('id', None) if run_id_obj else None
+print("run_id: " + repr(run_id))
+tags = context.get('tags', {}).get('jobId', None)
+print("tags: " + repr(tags))
+
+# COMMAND ----------
+
 # Import pyspark utility functions
 from pyspark.sql import functions as F
 
