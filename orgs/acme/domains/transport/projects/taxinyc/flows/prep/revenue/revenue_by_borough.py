@@ -10,6 +10,12 @@
 
 # COMMAND ----------
 
+dbutils.widgets.text("jobparamfoo", "lee")
+jobparamfoo = dbutils.widgets.get("jobparamfoo")
+print("jobparamfoo: {jobparamfoo}")
+
+# COMMAND ----------
+
 def get_parameters():
     all_args = dict(dbutils.notebook.entry_point.getCurrentBindings())
     # remove '--' substring
