@@ -30,7 +30,7 @@ def _widget_pipeline_env(dbutils):
         pipeline_env = dbutils.widgets.get("pipeline_env")
         print(f"dbprefix: pipeline_env: {pipeline_env}")
         return pipeline_env
-    except Exception e:
+    except Exception as e:
         print("widget pipeline_env not accessible: " + str(e))
         return None
 
