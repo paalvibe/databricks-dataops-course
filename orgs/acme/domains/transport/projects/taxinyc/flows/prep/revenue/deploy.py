@@ -51,7 +51,7 @@ def run_job(*, dbutils, job_id):
 
 # COMMAND ----------
 
-# Deploy jobs based on deployment.yml, in dev mode
+# Deploy jobs based on deployment.yml, in dev mode, specified by by env param
 response = autojob(env="dev")
 
 # COMMAND ----------
