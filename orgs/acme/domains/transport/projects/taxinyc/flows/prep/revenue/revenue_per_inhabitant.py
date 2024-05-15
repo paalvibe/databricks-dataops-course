@@ -88,6 +88,7 @@ revenue_per_inhabitant_tbl = tblname(cat=catalog, db="revenue", tbl="revenue_per
 print("revenue_per_inhabitant_tbl:" + repr(revenue_per_inhabitant_tbl))
 (
     revenue_per_inhabitant_df.write.mode("overwrite")
+    .option("mergeSchema", True)
     .format("delta")
     .saveAsTable(revenue_per_inhabitant_tbl)
 )
