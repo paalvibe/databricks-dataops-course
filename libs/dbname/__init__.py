@@ -29,6 +29,25 @@ def dbprefix(*, env, dbutils):
     return _depname(dbutils=dbutils, env=env)
 
 
+def _git_src(dbutils):
+    """Get git src params from either task params or repos api.
+    Fall back to task params, since repos API might be denied from jobs."""
+    try:
+        return git_source(dbutils)
+    except Exception:
+        print("No access to repos API, so use widget params")
+    # return dep_prefix, if no access to git state
+    return _git_src_from_widget_params(dbutils)
+
+
+def _git_src_from_widget_params(dbutils):
+    return {
+        "git_url": dbutils.widgets.get("git_url"),
+        "git_branch": dbutils.widgets.get("git_branch"),
+        "git_commit": dbutils.widgets.get("git_commit"),
+    }
+
+
 def _depname(*, dbutils, env):
     """Compose deployment prefix from env and git config"""
     pipeline_env = pipelineenv(dbutils)
@@ -39,13 +58,8 @@ def _depname(*, dbutils, env):
     if env == "dev":
         uname = username(dbutils)
         dep_prefix = f"{env}_{uname}_"
-    # Get git state
-    try:
-        git_src = git_source(dbutils)
-    except Exception:
-        # return dep_prefix, if no access to git state
-        return dep_prefix
-
+    # Get git state to build db name
+    git_src = _git_src(dbutils)
     branch = _clean_branch(git_src["git_branch"])
     commit_shortref = _commit_shortref(git_src["git_commit"])
     return f"{dep_prefix}{branch}_{commit_shortref}_"

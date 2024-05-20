@@ -10,6 +10,10 @@
 
 # COMMAND ----------
 
+from libs.dataops.job.params import job_param
+
+# COMMAND ----------
+
 # Import pyspark utility functions
 from pyspark.sql import functions as F
 
@@ -17,6 +21,11 @@ from pyspark.sql import functions as F
 from libs.tblname import tblname
 from libs.catname import catname_from_path
 from libs.dbname import dbname
+
+# COMMAND ----------
+
+git_commit = job_param(dbutils=dbutils, param="git_commit")
+print("git_commit: " + repr(git_commit))
 
 # COMMAND ----------
 

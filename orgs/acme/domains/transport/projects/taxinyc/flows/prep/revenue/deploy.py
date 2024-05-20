@@ -23,25 +23,7 @@
 
 import requests
 from libs.dataops.deploy.autojob import autojob
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC
-# MAGIC ## Define function  for running a job
-
-# COMMAND ----------
-
-def run_job(*, dbutils, job_id):
-    """Run job now"""
-    ctx = dbutils.notebook.entry_point.getDbutils().notebook().getContext()
-    api_host = ctx.apiUrl().get()
-    api_token = ctx.apiToken().get()
-    return requests.post(
-        f"{api_host}/api/2.1/jobs/run-now",
-        headers={"Authorization": f"Bearer {api_token}"},
-        json={"job_id": job_id},
-    ).json()
+from libs.dataops.job import run_job_by_name
 
 # COMMAND ----------
 
@@ -66,7 +48,7 @@ response
 
 # COMMAND ----------
 
-run_job(dbutils=dbutils, job_id=response['response']['job_id'])
+run_job_by_name(dbutils=dbutils, job_name=response['job_name'])
 
 # COMMAND ----------
 
@@ -78,7 +60,7 @@ run_job(dbutils=dbutils, job_id=response['response']['job_id'])
 # COMMAND ----------
 
 # os.environ['PIPELINE_ENV'] = 'prod'
-# # Deploy jobs based on deployment.yml, in dev mode
+# Deploy jobs based on deployment.yml, in dev mode
 # prod_response = autojob(env="prod")
 
 # COMMAND ----------
@@ -89,4 +71,8 @@ run_job(dbutils=dbutils, job_id=response['response']['job_id'])
 
 # COMMAND ----------
 
-# run_job(dbutils=dbutils, job_id=prod_response['response']['job_id'])
+# run_job_by_name(dbutils=dbutils, job_name=prod_response['job_name'])
+
+# COMMAND ----------
+
+
