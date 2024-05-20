@@ -30,7 +30,7 @@ from libs.dbname import dbname
 
 # COMMAND ----------
 
-params = job_params()
+params = job_params(dbutils)
 print("params: " + repr(params))
 
 # COMMAND ----------
