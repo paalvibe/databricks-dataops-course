@@ -16,7 +16,7 @@
 
 # COMMAND ----------
 
-from libs.dataops.job.params import job_params
+from libs.dataops.job.params import job_param
 
 # COMMAND ----------
 
@@ -30,8 +30,8 @@ from libs.dbname import dbname
 
 # COMMAND ----------
 
-params = job_params(dbutils)
-print("params: " + repr(params))
+git_commit = job_param(dbutils=dbutils, param="git_commit")
+print("git_commit: " + repr(git_commit))
 
 # COMMAND ----------
 

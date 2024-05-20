@@ -128,7 +128,24 @@ DEV_EXPECTED_CONFIG = {
         },
     ],
     "job_clusters": [],
-    "parameters": [],
+    "parameters": [
+        {
+            "default": "dev",
+            "name": "pipeline_env",
+        },
+        {
+            "default": "https://github.com/paalvibe/databricks-dataops-course",
+            "name": "git_url",
+        },
+        {
+            "default": "feature/gh-345-revenue",
+            "name": "git_branch",
+        },
+        {
+            "default": "aaaabbbb2a48e1a5fc5b9b40746c82f81cce1111",
+            "name": "git_commit",
+        },
+    ],
     "run_as": {
         "user_name": "paal-peter.paalson@foo.org",
     },
