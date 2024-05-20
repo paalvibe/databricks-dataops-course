@@ -9,12 +9,31 @@ def buildconfig(*, cfg, job_name, depname, env, dbutils):
     full_cfg = defaultconfig().copy()
     full_cfg.update(cfg)
     full_cfg["name"] = job_name
-    full_cfg["tags"] = _tags(cfg=cfg, depname=depname, env=env)
+    tags = _tags(cfg=cfg, depname=depname, env=env)
+    full_cfg["tags"] = tags
+    # Parameters are available as widget params
+    # e.g. dbutils.widgets.get("pipeline_env")
+    # Other dbutils functions might be limited by run permissions.
+    # Example error:
+    # PERMISSION_DENIED: Missing required permissions [View] on node with ID
+    # So we use widget parameters instead.
     full_cfg["parameters"] = [
         {
             "name": "pipeline_env",
             "default": env,
-        }
+        },
+        {
+            "name": "git_url",
+            "default": tags["git_url"],
+        },
+        {
+            "name": "git_branch",
+            "default": tags["git_branch"],
+        },
+        {
+            "name": "git_commit",
+            "default": tags["git_commit"],
+        },
     ]
     full_cfg = enrich_tasks(cfg=full_cfg, env=env, dbutils=dbutils)
     # Get list of clusters used by tasks

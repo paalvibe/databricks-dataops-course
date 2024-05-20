@@ -16,16 +16,7 @@
 
 # COMMAND ----------
 
-def get_parameters():
-    all_args = dict(dbutils.notebook.entry_point.getCurrentBindings())
-    # remove '--' substring
-    all_args = {key.replace('--', ''): value for key, value in all_args.items()}
-    # parse values to correct format
-    all_args = {key: ast.literal_eval(value) for key, value in all_args.items()}
-    return all_args
-
-params = get_parameters()
-print("params: " + repr(params))
+from libs.dataops.job.params import job_params
 
 # COMMAND ----------
 
@@ -36,6 +27,11 @@ from pyspark.sql import functions as F
 from libs.tblname import tblname
 from libs.catname import catname_from_path
 from libs.dbname import dbname
+
+# COMMAND ----------
+
+params = job_params()
+print("params: " + repr(params))
 
 # COMMAND ----------
 
