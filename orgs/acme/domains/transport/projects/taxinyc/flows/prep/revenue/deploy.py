@@ -16,8 +16,8 @@
 # COMMAND ----------
 
 # Enable live reloading of libs, not needed now
-%load_ext autoreload
-%autoreload 2
+# %load_ext autoreload
+# %autoreload 2
 
 # COMMAND ----------
 
@@ -54,25 +54,13 @@ run_job_by_name(dbutils=dbutils, job_name=response['job_name'])
 
 # MAGIC %md
 # MAGIC
-# MAGIC # Experimental code
-
-# COMMAND ----------
-
-from libs.dataops.deploy.autojob import autojob
-response = autojob(env="dev")
-run_job(dbutils=dbutils, job_id=response['response']['job_id'])
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC
 # MAGIC ## Tasks for later
 # MAGIC ### Task: Deploy to prod
 
 # COMMAND ----------
 
 # os.environ['PIPELINE_ENV'] = 'prod'
-# # Deploy jobs based on deployment.yml, in dev mode
+# Deploy jobs based on deployment.yml, in dev mode
 # prod_response = autojob(env="prod")
 
 # COMMAND ----------
@@ -83,4 +71,8 @@ run_job(dbutils=dbutils, job_id=response['response']['job_id'])
 
 # COMMAND ----------
 
-# run_job(dbutils=dbutils, job_id=prod_response['response']['job_id'])
+# run_job_by_name(dbutils=dbutils, job_name=prod_response['job_name'])
+
+# COMMAND ----------
+
+
