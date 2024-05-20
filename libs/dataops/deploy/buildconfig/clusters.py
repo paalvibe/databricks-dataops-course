@@ -18,7 +18,7 @@ def lookup_cluster_id(*, dbutils, cluster_name):
     for cluster in cluster_list:
         if cluster["cluster_name"] == cluster_name:
             return cluster["cluster_id"]
-    return None
+    raise Exception(f"Cluster {cluster_name} not found")
 
 
 cluster_list = None
