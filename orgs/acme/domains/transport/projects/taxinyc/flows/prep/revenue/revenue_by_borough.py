@@ -24,11 +24,6 @@ from libs.dbname import dbname
 
 # COMMAND ----------
 
-git_commit = job_param(dbutils=dbutils, param="git_commit")
-print("git_commit: " + repr(git_commit))
-
-# COMMAND ----------
-
 cat = catname_from_path()
 db = dbname(db="revenue", cat=cat)
 print("New db name: " + db)
