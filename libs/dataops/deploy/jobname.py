@@ -6,7 +6,7 @@ def jobname(dbutils, depname):
     _nbpath = nbpath(dbutils)
     # Example path: "/Repos/foo@bar.org/databricks-dataops-course/orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue/deploy"
     ret = re.search(
-        "\/Repos\/.+\/orgs\/([^/]+)\/domains\/([^/]+)\/projects\/([^/]+)\/flows\/([^/]+)\/.+",
+        ".+\/orgs\/([^/]+)\/domains\/([^/]+)\/projects\/([^/]+)\/flows\/([^/]+)\/.+",
         _nbpath,
         re.IGNORECASE,
     )

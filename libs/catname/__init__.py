@@ -15,7 +15,7 @@ def catname_from_path():
         .get()
     )
     print(f"nb_path: {nb_path}")
-    path_re = select_path_re(nb_path)
+    path_re = _select_path_re(nb_path)
     ret = re.search(
         path_re,
         nb_path,
