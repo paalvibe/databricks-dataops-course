@@ -15,8 +15,9 @@ def catname_from_path():
         .get()
     )
     print(f"nb_path: {nb_path}")
+    path_re = select_path_re(nb_path)
     ret = re.search(
-        "\/Repos\/.+\/orgs\/([^/]+)\/domains\/([^/]+)\/projects\/([^/]+)\/flows\/([^/]+)\/.+",
+        path_re,
         nb_path,
         re.IGNORECASE,
     )
@@ -26,3 +27,17 @@ def catname_from_path():
     # flow = ret[4]  # we discard flow for now
     catalog = f"{org}_{domain}_{project}"
     return catalog
+
+
+def _select_path_re(nb_path):
+    """For now use an optimistic assumption that we don't need to match on first part of path, e.g.:
+
+    /Workspace/Repos/foo@example.com/databricks-dataops-course/
+
+    or
+
+    /Workspace/Users/foo@example.com/Repos/databricks-dataops-course/
+
+    Databricks has gradually changed default paths, so we need a more tolerant first part of the path.
+    """
+    return ".+\/orgs\/([^/]+)\/domains\/([^/]+)\/projects\/([^/]+)\/flows\/([^/]+)\/.+"

@@ -14,9 +14,9 @@
 # MAGIC ![Link Databricks and Github](https://raw.githubusercontent.com/paalvibe/databricks-dataops-course/refs/heads/main/images/link_databricks_github.png)
 # MAGIC
 # MAGIC 3. [Create your own branch](https://docs.databricks.com/en/repos/git-operations-with-repos.html#create-a-new-branch)
-# MAGIC     - Named like such: `feat/gh-[ your initial letters converted to number ]-[ favourite place ]`, but not too long, using the character number [from here](https://www.worldometers.info/languages/how-many-letters-alphabet/). 
+# MAGIC     - Named like such: `feat/gh-[ your initial letters converted to number ]-[ favourite place ]`, but not too long, using the character number [from here](https://www.worldometers.info/languages/how-many-letters-alphabet/).
 # MAGIC     - E.g.: `feat-gh[pv]-[place]` => `feat-gh1622-assisi`.
-# MAGIC     - Do NOT use your name or username as part of the branch name.
+# MAGIC     - Do NOT use your name or username as part of the branch name.  Don't use non-ascii characters in the place name.
 # MAGIC
 # MAGIC ![Repos button](https://raw.githubusercontent.com/paalvibe/databricks-dataops-course/refs/heads/main/images/switch_branch.png)
 # MAGIC
