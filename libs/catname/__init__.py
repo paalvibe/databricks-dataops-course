@@ -31,7 +31,7 @@ def catname_from_path():
 
 def _select_path_re(nb_path):
     """For now use an optimistic assumption that we don't need to match on first part of path, e.g.:
-    
+
     /Workspace/Repos/foo@example.com/databricks-dataops-course/
 
     or
