@@ -8,8 +8,8 @@
 
 # COMMAND ----------
 
-# %load_ext autoreload
-# %autoreload 2
+# MAGIC %load_ext autoreload
+# MAGIC %autoreload 2
 
 # COMMAND ----------
 
@@ -36,11 +36,23 @@ from libs.catname import catname_from_path
 
 # COMMAND ----------
 
+# MAGIC %md
+# MAGIC ### Create database
+
+# COMMAND ----------
+
 cat = catname_from_path()
 db = dbname(db="revenue", cat=cat)
-print("New db name: " + db)
 spark.sql(f"USE catalog {cat}")
 spark.sql(f"CREATE DATABASE IF NOT EXISTS {db}")
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ### Create file volume to store CSVs
+
+# COMMAND ----------
+
 volume = "static_data"
 spark.sql(f"CREATE VOLUME IF NOT EXISTS {db}.{volume}")
 
@@ -109,4 +121,18 @@ print("borough_population_tbl:" + repr(borough_population_tbl))
 
 # COMMAND ----------
 
+# MAGIC %md
+# MAGIC
+# MAGIC ### Generate training dataset
+# MAGIC
+# MAGIC Only needed to be run once by teacher, so ignore
 
+# COMMAND ----------
+
+# # Used to generate training data set, needed by DLT Pipeline
+# borough_population_tbl = "training.taxinyc_trips.borough_population"
+# (
+#     simple_pop_df.write.mode("overwrite")
+#     .format("delta")
+#     .saveAsTable(borough_population_tbl)
+# )
