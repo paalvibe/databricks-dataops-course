@@ -54,10 +54,11 @@
 # MAGIC     2. `Product edition`: `Advanced`
 # MAGIC     2. `Source code`: Lookup the `orgs/acme/domains/transport/projects/taxinyc/flows/prep/dltrevenue_w_dq/revenue_w_dq` notebook
 # MAGIC     3. `Destination`: Unity Catalog
-# MAGIC     4. `Catalog`: acme_transport_taxinyc
+# MAGIC     4. `Catalog`: `acme_transport_taxinyc`
 # MAGIC     5. `Target schema`: Select the name of the schema/database you created in the setupdb notebook
-# MAGIC     6. Don't add any other options, or set any policies
-# MAGIC 5. Press `Start` to run the pipeline
+# MAGIC     6. `Compute -> Cluster Policy`: `dlt_default_policy`. If you cannot select a policy, save and open again to edit.
+# MAGIC     7. Don't add any other options, or set any policies
+# MAGIC 5. Press `Start` to run the pipeline. It can take 5-10m for the first run. Later runs are faster.
 
 # COMMAND ----------
 
