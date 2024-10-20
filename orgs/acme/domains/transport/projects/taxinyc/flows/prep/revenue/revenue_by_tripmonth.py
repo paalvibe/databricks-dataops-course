@@ -15,7 +15,7 @@ from pyspark.sql import functions as F
 
 # Name functions enables automatic env+user specific database naming
 from libs.dbname import dbname
-from libs.tblname import tblname, username
+from libs.tblname import tblname
 from libs.catname import catname_from_path
 
 # COMMAND ----------
