@@ -1,10 +1,10 @@
 # dbutils must be passed in as param as databricks lib not available in UC cluster
-# from databricks.sdk.runtime import dbutils
+# from databricks.sdk.deployment import dbutils
 import inspect
 import re
 from libs.username import username
 from libs.dataops.deploy.repo import git_source
-from libs.dataops.deploy.pipelineenv import pipelineenv
+from libs.dataops.deploy.deploymentenv import deploymentenv
 
 
 def dbname(
@@ -50,8 +50,8 @@ def _git_src_from_widget_params(dbutils):
 
 def _depname(*, dbutils, env):
     """Compose deployment prefix from env and git config"""
-    pipeline_env = pipelineenv(dbutils)
-    if pipeline_env == "prod":
+    deployment_env = deploymentenv(dbutils)
+    if deployment_env == "prod":
         return ""
     dep_prefix = env
     # Only include username in `dev`, we don't want it in `staging`

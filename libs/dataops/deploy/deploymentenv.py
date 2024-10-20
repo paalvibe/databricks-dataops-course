@@ -1,37 +1,37 @@
 import os
 
 
-def pipelineenv(dbutils):
+def deploymentenv(dbutils):
     """Compose deployment name from env and git config"""
-    """If pipeline env is set in os.environ or in job tags, return it"""
-    os_env = os.environ.get("PIPELINE_ENV", None)
+    """If deployment env is set in os.environ or in job tags, return it"""
+    os_env = os.environ.get("DEPLOYMENT_ENV", None)
     # Prod should have no prefix
     if os_env:
         return os_env
 
-    widget_pipeline_env = _widget_pipeline_env(dbutils)
-    if widget_pipeline_env:
-        return widget_pipeline_env
+    widget_deployment_env = _widget_deployment_env(dbutils)
+    if widget_deployment_env:
+        return widget_deployment_env
     
     return None
 
     # Could not find a way of getting tags
-    # tag_pipeline_env = _job_tag(dbutils=dbutils, key="PIPELINE_ENV")
-    # # task_param = _task_param(dbutils=dbutils, param="PIPELINE_ENV", dbutils=dbutils)
-    # if tag_pipeline_env:
-    #     return tag_pipeline_env
+    # tag_deployment_env = _job_tag(dbutils=dbutils, key="DEPLOYMENT_ENV")
+    # # task_param = _task_param(dbutils=dbutils, param="DEPLOYMENT_ENV", dbutils=dbutils)
+    # if tag_deployment_env:
+    #     return tag_deployment_env
     # return None
 
 
-def _widget_pipeline_env(dbutils):
+def _widget_deployment_env(dbutils):
     """Get a job parameter by referring to it with widgets.get().
     The job parameter is defined in job config."""
     try:
-        pipeline_env = dbutils.widgets.get("pipeline_env")
-        print(f"dbprefix: pipeline_env: {pipeline_env}")
-        return pipeline_env
+        deployment_env = dbutils.widgets.get("deployment_env")
+        print(f"dbprefix: deployment_env: {deployment_env}")
+        return deployment_env
     except Exception as e:
-        # print("widget pipeline_env not accessible")
+        # print("widget deployment_env not accessible")
         return None
 
 
@@ -42,7 +42,7 @@ def _widget_pipeline_env(dbutils):
 #     except Exception:
 #         print("tags not available")
 #         return None
-#     print("pipelineenv.py:" + repr(27) + ":tags:" + repr(tags))
+#     print("deploymentenv.py:" + repr(27) + ":tags:" + repr(tags))
 #     if key in tags:
 #         return tags[key]
 #     return None

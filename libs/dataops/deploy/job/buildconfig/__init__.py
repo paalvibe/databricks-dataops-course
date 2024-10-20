@@ -1,6 +1,6 @@
-from libs.dataops.deploy.defaultconfig import defaultconfig
-from libs.dataops.deploy.buildconfig.enrichtasks import enrich_tasks
-from libs.dataops.deploy.buildconfig.clusters import add_clusters
+from libs.dataops.deploy.job.defaultconfig import defaultconfig
+from libs.dataops.deploy.job.buildconfig.enrichtasks import enrich_tasks
+from libs.dataops.deploy.job.buildconfig.clusters import add_clusters
 from libs.username import databricks_email
 
 
@@ -12,14 +12,14 @@ def buildconfig(*, cfg, job_name, depname, env, dbutils):
     tags = _tags(cfg=cfg, depname=depname, env=env)
     full_cfg["tags"] = tags
     # Parameters are available as widget params
-    # e.g. dbutils.widgets.get("pipeline_env")
+    # e.g. dbutils.widgets.get("deployment_env")
     # Other dbutils functions might be limited by run permissions.
     # Example error:
     # PERMISSION_DENIED: Missing required permissions [View] on node with ID
     # So we use widget parameters instead.
     full_cfg["parameters"] = [
         {
-            "name": "pipeline_env",
+            "name": "deployment_env",
             "default": env,
         },
         {

@@ -131,7 +131,7 @@ DEV_EXPECTED_CONFIG = {
     "parameters": [
         {
             "default": "dev",
-            "name": "pipeline_env",
+            "name": "deployment_env",
         },
         {
             "default": "https://github.com/paalvibe/databricks-dataops-course",

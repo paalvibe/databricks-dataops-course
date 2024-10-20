@@ -61,9 +61,9 @@ def test_tblname(create, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10):
         == "training.dev_paalpeterpaalson_featuregh345revenue_aaaabbbb_nyc_workshop.trips"
     )
 
-    os.environ["PIPELINE_ENV"] = "prod"
+    os.environ["DEPLOYMENT_ENV"] = "prod"
     prodname = tblname(
         tbl="trips", db="nyc_workshop", cat="training", dbutils="something"
     )
-    del os.environ["PIPELINE_ENV"]
+    del os.environ["DEPLOYMENT_ENV"]
     assert prodname == "training.nyc_workshop.trips"
