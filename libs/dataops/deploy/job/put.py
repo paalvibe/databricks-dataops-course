@@ -1,5 +1,5 @@
 import requests
-from libs.dataops.deploy.job import get_existing_job_id
+from libs.dataops.deploy.job.get import get_existing_job_id
 
 
 def put(
