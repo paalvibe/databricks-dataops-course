@@ -23,6 +23,20 @@ def nbrepopath(dbutils):
     return relpath
 
 
+def nbabsfolder(dbutils):
+    """Get full file system path of the folder of the
+    deploy notebook in repo
+
+    Example path:
+    /Repos/foo@bar.org/databricks-dataops-course/orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue
+    """
+    _nbpath = nbpath(dbutils)
+    # chip off notebook name, and return its folder
+    relpathfolder = os.path.dirname(_nbpath)
+    print(f"relpathfolder {relpathfolder}")
+    return relpathfolder
+
+
 def nbrelfolder(dbutils):
     """Return relative path of the folder of the notebook
 

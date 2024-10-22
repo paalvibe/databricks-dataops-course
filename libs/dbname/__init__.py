@@ -13,6 +13,7 @@ def dbname(
     cat="training",
     env="dev",
     dbutils=None,
+    prepend_cat=True,
 ):
     if not dbutils:
         # Get dbutils from calling module, as databricks lib not available in UC cluster
@@ -20,7 +21,10 @@ def dbname(
     if not db:
         raise ValueError("db must be a non-empty string")
     db_prefix = dbprefix(env=env, dbutils=dbutils)
-    return f"{cat}.{db_prefix}{db}"
+    db_only = f"{db_prefix}{db}"
+    if prepend_cat:
+        return f"{cat}.{db_only}"
+    return db_only
     # ignore catalog for now, until UC is enabled
     # return f"{db_prefix}{db}"
 

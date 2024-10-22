@@ -4,7 +4,7 @@ import json
 from libs.dataops.deploy.readconfig import read_config_yaml
 from libs.dataops.deploy.repo import git_source
 from libs.dataops.deploy import api
-from libs.dataops.deploy.depname import depname as _depname
+from libs.dataops.deploy.depname import _depname as depname
 from libs.dataops.deploy.pipeline.put import put
 from libs.dataops.deploy.pipeline.pipelinename import pipelinename
 from libs.dataops.deploy.pipeline.buildconfig import buildconfig
@@ -24,11 +24,11 @@ def autopipeline(*, dbutils=None, cfgyaml="deployment.yml", env="dev"):
     api_token = api.api_token(dbutils)
     api_host = api.api_host(dbutils)
     cfg["git_source"] = git_source(dbutils)
-    depname = _depname(dbutils=dbutils, env=env, git_src=cfg["git_source"])
-    pipeline_name = pipelinename(dbutils=dbutils, depname=depname)
-    print(f"""deployment: {depname}""")
+    _depname = depname(dbutils=dbutils, env=env, git_src=cfg["git_source"])
+    pipeline_name = pipelinename(dbutils=dbutils, depname=_depname)
+    print(f"""deployment: {_depname}""")
     pipeline_config = buildconfig(
-        pipeline_name=pipeline_name, cfg=cfg, depname=depname, env=env, dbutils=dbutils
+        pipeline_name=pipeline_name, cfg=cfg, depname=_depname, env=env, dbutils=dbutils
     )
     print("\npipeline_config:\n" + json.dumps(pipeline_config, sort_keys=True, indent=4))
     print("")

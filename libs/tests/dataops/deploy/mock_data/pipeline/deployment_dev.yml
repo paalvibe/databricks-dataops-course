@@ -1,0 +1,16 @@
+# This is where to define jobs and tasks for
+# this flow (pipeline).
+#
+# The structure somewhat follows the Jobs API
+# and the Delta Live Tables API for jobs and
+# pipelines respectively.
+#
+# Jobs API: https://docs.databricks.com/dev-tools/api/latest/jobs.html
+# Delta Live Tables API: https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html
+
+---
+pipeline_task:
+- pipeline_key: revenue
+  policy_name: dlt_default_policy
+  cluster_template: common_dlt
+  db: dltrevenue

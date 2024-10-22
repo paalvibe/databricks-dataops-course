@@ -2,11 +2,12 @@ import inspect
 import re
 
 
-def catname_from_path():
+def catname_from_path(dbutils=None):
     """Derive catalog name from repo data mesh structure, e.g.
     /Repos/paal@foobar.foo/databricks-dataops-course/orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue/revenue
     """
-    dbutils = inspect.stack()[1][0].f_globals["dbutils"]
+    if not dbutils:
+        dbutils = inspect.stack()[1][0].f_globals["dbutils"]
     nb_path = (
         dbutils.notebook.entry_point.getDbutils()
         .notebook()
