@@ -4,7 +4,7 @@ import json
 from libs.dataops.deploy.readconfig import read_config_yaml
 from libs.dataops.deploy.repo import git_source
 from libs.dataops.deploy import api
-from libs.dataops.deploy.depname import _depname as depname
+from libs.dataops.deploy.depname import depname
 from libs.dataops.deploy.pipeline.put import put
 from libs.dataops.deploy.pipeline.pipelinename import pipelinename
 from libs.dataops.deploy.pipeline.buildconfig import buildconfig
@@ -21,6 +21,7 @@ def autopipeline(*, dbutils=None, cfgyaml="deployment.yml", env="dev"):
     )
     if not dbutils:
         dbutils = inspect.stack()[1][0].f_globals["dbutils"]
+    print("autopipeline.py:" + repr(23) + ":dbutils:" + repr(dbutils))
     api_token = api.api_token(dbutils)
     api_host = api.api_host(dbutils)
     cfg["git_source"] = git_source(dbutils)

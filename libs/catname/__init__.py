@@ -8,13 +8,7 @@ def catname_from_path(dbutils=None):
     """
     if not dbutils:
         dbutils = inspect.stack()[1][0].f_globals["dbutils"]
-    nb_path = (
-        dbutils.notebook.entry_point.getDbutils()
-        .notebook()
-        .getContext()
-        .notebookPath()
-        .get()
-    )
+    nb_path = _nbpath(dbutils)
     print(f"nb_path: {nb_path}")
     path_re = _select_path_re(nb_path)
     ret = re.search(
@@ -28,6 +22,17 @@ def catname_from_path(dbutils=None):
     # flow = ret[4]  # we discard flow for now
     catalog = f"{org}_{domain}_{project}"
     return catalog
+
+
+def _nbpath(dbutils):
+    """e.g. /Repos/paal@foobar.foo/databricks-dataops-course/orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue/revenue"""
+    return (
+        dbutils.notebook.entry_point.getDbutils()
+        .notebook()
+        .getContext()
+        .notebookPath()
+        .get()
+    )
 
 
 def _select_path_re(nb_path):

@@ -1,5 +1,6 @@
 import pytest
 from unittest import mock
+from unittest.mock import MagicMock
 from libs.dataops.deploy.autopipeline import autopipeline
 
 
@@ -31,18 +32,16 @@ POLICIES_LIST_RESPONSE = [
 @mock.patch(
     "libs.dataops.deploy.api.api_host", return_value="https://frankfurt.databricks.com"
 )
+@mock.patch("libs.catname._nbpath", return_value=FULLNBPATH)
 @mock.patch("libs.dataops.deploy.repo._get_status", return_value=REPO_STATUS)
 @mock.patch("libs.dataops.deploy.repo._get_repo", return_value=REPO)
 @mock.patch("libs.username.databricks_email", return_value=DBRICKS_USERNAME)
-@mock.patch(
-    "libs.dataops.deploy.buildconfig.databricks_email", return_value=DBRICKS_USERNAME
-)
 @mock.patch(
     "libs.dataops.deploy.nbpath.nbpath",
     return_value=FULLNBPATH,
 )
 @mock.patch(
-    "libs.dataops.deploy.pipelinename.nbpath",
+    "libs.dataops.deploy.pipeline.pipelinename.nbpath",
     return_value=FULLNBPATH,
 )
 @mock.patch(
@@ -53,8 +52,8 @@ POLICIES_LIST_RESPONSE = [
 @mock.patch("libs.dataops.deploy.pipeline.put._create")
 def test_autopipeline_dev_create(create, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10):
     autopipeline(
-        dbutils="something",
-        cfgyaml="./libs/tests/dataops/deploy/pipeline/mock_data/deployment_dev.yml",
+        dbutils=MagicMock(),
+        cfgyaml="./libs/tests/dataops/deploy/mock_data/pipeline/deployment_dev.yml",
     )
     create_cnt = create.call_count
     assert create_cnt == 1

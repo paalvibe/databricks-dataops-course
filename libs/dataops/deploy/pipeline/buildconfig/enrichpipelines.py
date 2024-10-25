@@ -4,10 +4,12 @@ from libs.dbname import dbname
 
 
 def enrich_pipeline(*, cfg, dbutils, env):
-    new_pipeline = cfg.pop("pipeline_task")
+    new_pipeline = cfg.pop("pipeline_tasks")[0]
+    print("enrichpipelines.py:" + repr(8) + ":cfg.pop:" + repr(cfg.pop))
+    print("enrichpipelines.py:" + repr(8) + ":new_pipeline:" + repr(new_pipeline))
     # Set target catalog
     cat = catname_from_path(dbutils)
-    db = cfg.pop("db")
+    db = new_pipeline.pop("db")
     cfg["catalog"] = cat
     # Set target database/schema
     pipeline_key = new_pipeline["pipeline_key"]
