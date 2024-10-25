@@ -37,7 +37,7 @@ FULLNBPATH = f"/Repos/{DBRICKS_USERNAME}/databricks-dataops-course/{DEPLOY_NB_PA
     "libs.dataops.deploy.jobname.nbpath",
     return_value=FULLNBPATH,
 )
-@mock.patch("libs.dataops.deploy.job._get_job", return_value=[])
+@mock.patch("libs.dataops.deploy.job.get._get_jobs", return_value=[])
 @mock.patch("libs.dataops.deploy.put._create")
 def test_autojob_prod_create(create, p1, p2, p3, p4, p5, p6, p7, p8, p9):
     autojob(

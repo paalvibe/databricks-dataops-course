@@ -49,7 +49,7 @@ CLUSTER_LIST_RESPONSE = [
     "libs.dataops.deploy.buildconfig.clusters._get_clusters",
     return_value=CLUSTER_LIST_RESPONSE,
 )
-@mock.patch("libs.dataops.deploy.job._get_job", return_value=[])
+@mock.patch("libs.dataops.deploy.job.get._get_jobs", return_value=[])
 @mock.patch("libs.dataops.deploy.put._create")
 def test_autojob_dev_create(create, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10):
     autojob(
