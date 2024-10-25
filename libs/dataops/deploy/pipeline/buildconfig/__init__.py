@@ -5,11 +5,11 @@ from libs.dataops.deploy.pipeline.buildconfig.policies import policy_set
 # from libs.username import databricks_email
 
 
-def buildconfig(*, cfg, job_name, depname, env, dbutils):
+def buildconfig(*, cfg, pipeline_name, depname, env, dbutils):
     """Combine custom parameters with default parameters, and default cluster config"""
     full_cfg = defaultconfig().copy()
     full_cfg.update(cfg)
-    full_cfg["name"] = job_name
+    full_cfg["name"] = pipeline_name
     tags = _tags(cfg=cfg, depname=depname, env=env)
     full_cfg["tags"] = tags
     full_cfg["parameters"] = [

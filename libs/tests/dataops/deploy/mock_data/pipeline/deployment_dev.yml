@@ -9,7 +9,7 @@
 # Delta Live Tables API: https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html
 
 ---
-pipeline_task:
+pipeline_tasks:
 - pipeline_key: revenue
   policy_name: dlt_default_policy
   cluster_template: common_dlt
