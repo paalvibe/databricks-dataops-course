@@ -1,6 +1,6 @@
 import pytest
 from unittest import mock
-from libs.dataops.deploy.autojob import autojob
+from libs.dataops.deploy.autopipeline import autopipeline
 
 
 REPO_STATUS = {"object_id": "foo"}
@@ -14,15 +14,15 @@ REPO = {
 
 DBRICKS_USERNAME = "paal-peter.paalson@foo.org"
 DEPLOY_NB_PATH = (
-    "orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue/deploy"
+    "orgs/acme/domains/transport/projects/taxinyc/flows/prep/dltrevenue/deploy"
 )
 FULLNBPATH = f"/Repos/{DBRICKS_USERNAME}/databricks-dataops-course/{DEPLOY_NB_PATH}"
 
 
-CLUSTER_LIST_RESPONSE = [
+POLICIES_LIST_RESPONSE = [
     {
-        "cluster_id": "1234-567890-fooo123",
-        "cluster_name": "shared-job-cluster-dev",
+        "policy_id": "123B456789D12345",
+        "policy_name": "default_dlt_policy",
     }
 ]
 
@@ -42,31 +42,33 @@ CLUSTER_LIST_RESPONSE = [
     return_value=FULLNBPATH,
 )
 @mock.patch(
-    "libs.dataops.deploy.jobname.nbpath",
+    "libs.dataops.deploy.pipelinename.nbpath",
     return_value=FULLNBPATH,
 )
 @mock.patch(
-    "libs.dataops.deploy.buildconfig.clusters._get_clusters",
-    return_value=CLUSTER_LIST_RESPONSE,
+    "libs.dataops.deploy.pipeline.buildconfig.policies._get_policies",
+    return_value=POLICIES_LIST_RESPONSE,
 )
-@mock.patch("libs.dataops.deploy.job._get_job", return_value=[])
-@mock.patch("libs.dataops.deploy.put._create")
-def test_autojob_dev_create(create, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10):
-    autojob(
+@mock.patch("libs.dataops.deploy.pipeline.get._get_pipelines", return_value=[])
+@mock.patch("libs.dataops.deploy.pipeline.put._create")
+def test_autopipeline_dev_create(create, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10):
+    autopipeline(
         dbutils="something",
-        cfgyaml="./libs/tests/dataops/deploy/mock_data/deployment_dev.yml",
+        cfgyaml="./libs/tests/dataops/deploy/pipeline/mock_data/deployment_dev.yml",
     )
     create_cnt = create.call_count
     assert create_cnt == 1
     create_call = create.call_args_list[0]
-    job_name = create_call.kwargs.get("job_name")
+    pipeline_name = create_call.kwargs.get("pipeline_name")
     assert (
-        job_name
+        pipeline_name
         == "acme_transport_taxinyc_prep_dev_paalpeterpaalson_featuregh345revenue_aaaabbbb"
     )
-    job_config = create_call.kwargs.get("job_config")
-    print("test_autojob.py:" + repr(37) + ":job_config:" + repr(job_config))
-    assert job_config == DEV_EXPECTED_CONFIG
+    pipeline_config = create_call.kwargs.get("pipeline_config")
+    print(
+        "test_autopipeline.py:" + repr(37) + ":pipeline_config:" + repr(pipeline_config)
+    )
+    assert pipeline_config == DEV_EXPECTED_CONFIG
 
 
 DEV_EXPECTED_CONFIG = {
@@ -80,16 +82,9 @@ DEV_EXPECTED_CONFIG = {
         {
             "label": "default",
             "policy_id": "123B456789D12345",
-            "autoscale": {
-                "min_workers": 1,
-                "max_workers": 5,
-                "mode": "ENHANCED"
-            }
+            "autoscale": {"min_workers": 1, "max_workers": 5, "mode": "ENHANCED"},
         },
-        {
-            "label": "maintenance",
-            "policy_id": "123B456789D12345"
-        }
+        {"label": "maintenance", "policy_id": "123B456789D12345"},
     ],
     "development": True,
     "continuous": False,

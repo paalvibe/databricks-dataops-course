@@ -2,14 +2,14 @@ import requests
 
 
 def get_existing_job_id(*, api_host, api_token, job_name):
-    jobs = _get_job(api_host=api_host, api_token=api_token)
+    jobs = _get_jobs(api_host=api_host, api_token=api_token)
     for job in jobs:
         if job["settings"]["name"] == job_name:
             return job["job_id"]
     return None
 
 
-def _get_job(*, api_host, api_token):
+def _get_jobs(*, api_host, api_token):
     url = f"{api_host}/api/2.1/jobs/list"
     headers = {"Authorization": f"Bearer {api_token}"}
     response = requests.get(url, headers=headers)
