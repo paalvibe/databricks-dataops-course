@@ -6,9 +6,11 @@
 
 # COMMAND ----------
 
-# MAGIC %md ### 0. Select a cluster
+# MAGIC %md ### 0. Select Serverless as compute
 # MAGIC
-# MAGIC Press the Connect dropdown in the upper left menu, and select UC Shared cluster 1/2/3/4 etc
+# MAGIC Press the Connect dropdown in the upper left menu, and select Serverless ~~UC Shared cluster 1/2/3/4 etc~~.
+# MAGIC
+# MAGIC _Serverless is now available, and should be used by default, if a specialized cluster is not needed by the use case. We will only need Serverless here._
 
 # COMMAND ----------
 
