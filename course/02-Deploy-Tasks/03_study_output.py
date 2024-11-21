@@ -16,4 +16,7 @@
 
 # MAGIC %md
 # MAGIC
-# MAGIC Answer here...
+# MAGIC acme_transport_taxinyc.dev_kristianfrantzen_featcicd_c94b8749_revenue.borough_population
+# MAGIC acme_transport_taxinyc.dev_kristianfrantzen_featcicd_c94b8749_revenue.revenue_by_borough
+# MAGIC acme_transport_taxinyc.dev_kristianfrantzen_featcicd_c94b8749_revenue.revenue_by_tripmonth
+# MAGIC acme_transport_taxinyc.dev_kristianfrantzen_featcicd_c94b8749_revenue.revenue_per_inhabitant
