@@ -16,7 +16,6 @@ def add_clusters(*, cfg, used_clusters, env):
 def lookup_cluster_id(*, dbutils, cluster_name):
     cluster_list = _get_clusters(dbutils)
     for cluster in cluster_list:
-        print("cluster: " + repr(cluster))
         if cluster["cluster_name"] == cluster_name:
             return cluster["cluster_id"]
     raise Exception(f"Cluster {cluster_name} not found")
