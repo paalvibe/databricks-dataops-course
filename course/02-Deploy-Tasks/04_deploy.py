@@ -61,25 +61,3 @@
 # MAGIC %md
 # MAGIC
 # MAGIC Answer here...
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC
-# MAGIC ## Task: Where is the job cluster defined?
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC
-# MAGIC Answer here...
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC
-# MAGIC Answer here...
-
-# COMMAND ----------
-
-
