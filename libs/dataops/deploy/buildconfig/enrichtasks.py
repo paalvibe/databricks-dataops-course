@@ -14,5 +14,7 @@ def enrich_tasks(*, cfg, dbutils, env):
                 "notebook_path": f"{base_nb_path}/{task_key}",
                 "source": "GIT",
             }
+        enriched_tasks.append(new_task)
+
     cfg["tasks"] = enriched_tasks
     return cfg
