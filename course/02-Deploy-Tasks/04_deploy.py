@@ -20,7 +20,7 @@
 # MAGIC ## Task: Run dev deploy
 # MAGIC
 # MAGIC 1. Go to the notebook orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue/deploy
-# MAGIC 2. connect to the UC Shared Cluster you have been assigned, and run through the cells
+# MAGIC 2. Connect to serverless compute. Run through the cells
 # MAGIC 3. Run the cells for deploying and running the dev job
 
 # COMMAND ----------
