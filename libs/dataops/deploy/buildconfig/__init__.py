@@ -36,9 +36,6 @@ def buildconfig(*, cfg, job_name, depname, env, dbutils):
         },
     ]
     full_cfg = enrich_tasks(cfg=full_cfg, env=env, dbutils=dbutils)
-    # Get list of clusters used by tasks
-    used_clusters = full_cfg.pop("_used_clusters", {})
-    full_cfg = add_clusters(cfg=full_cfg, used_clusters=used_clusters, env=env)
     full_cfg["run_as"] = {
         "user_name": databricks_email(dbutils),
     }
