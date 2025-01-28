@@ -1,0 +1,22 @@
+{
+    "run_name": "Deploying or update all jobs in datamesh",
+    "timeout_seconds": 3600,
+    "tasks": [
+        {
+            "task_key": "Deploy_all",
+            "run_if": "ALL_SUCCESS",
+            "notebook_task": {
+                "notebook_path": "/Workspace/Repos/anders.rorvik@knowit.no/databricks-dataops-course/deploy/deploy_or_update_all_jobs",
+                "source": "WORKSPACE"
+            },
+            "timeout_seconds": 0,
+            "email_notifications": {},
+            "notification_settings": {
+                "no_alert_for_skipped_runs": false,
+                "no_alert_for_canceled_runs": false,
+                "alert_on_last_attempt": false
+            },
+            "webhook_notifications": {}
+        }
+    ]
+}

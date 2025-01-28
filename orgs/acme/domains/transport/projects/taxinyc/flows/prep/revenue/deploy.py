@@ -33,7 +33,7 @@ from libs.dataops.job import run_job_by_name
 
 # COMMAND ----------
 
-# Deploy jobs based on deployment.yml, in dev mode, specified by by env param
+# Deploy jobs based on deployment.yml, in dev mode, specified by env param
 response = autojob(env="dev")
 
 # COMMAND ----------
