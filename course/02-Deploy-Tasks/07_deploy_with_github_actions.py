@@ -30,7 +30,7 @@
 # MAGIC ## Task: Generate your databricks PAT.
 # MAGIC You will need a Personal Acccess Token to be able to run the Github Actions workflow.
 # MAGIC Generate the PAT in databricks.
-# MAGIC Save it as a secret in your repo, make sure you use the name DATABRICKS_TOKEN for the secret.
+# MAGIC Save it as a github actions secret in your repo, make sure you use the name DATABRICKS_TOKEN for the secret.
 # MAGIC furthermore, remember to save a secret for the DATABRICKS_HOST, or replace it with the actual host
 # MAGIC as the hostname is not really a secret.
 
