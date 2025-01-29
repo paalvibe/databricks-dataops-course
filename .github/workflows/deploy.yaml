@@ -17,7 +17,7 @@ jobs:
         uses: databricks/setup-cli@main
 
       - name: Deploy bundle
-        run: databricks repos update /Repos/anders.rorvik@knowit.no/databricks-dataops-course --branch main
+        run: databricks repos update /Repos/yourusername/databricks-dataops-course --branch main
         env:
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
           DATABRICKS_HOST: ${{secrets.DATABRICKS_HOST }}
