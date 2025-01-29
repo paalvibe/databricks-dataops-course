@@ -11,7 +11,7 @@
 
 # MAGIC %md
 # MAGIC ## Task - Figure out how it works, step 1
-# MAGIC Go to the deploy folder in the base of the repo. Study the json file called ```deploy.json```
+# MAGIC Go to the deploy folder in the base of the repo. Study the json file called ```deploy_job.json```
 # MAGIC which is a job definition that calls the notebook ```deploy_with_github_actions.py```
 # MAGIC with the python function.
 
@@ -38,9 +38,9 @@
 
 # MAGIC %md
 # MAGIC
-# MAGIC ## Task: Clone the repo again in the Repo folder
+# MAGIC ## Task: Clone the repo again in the **Repo** folder
 # MAGIC Note that this is not inside your workspace.
-# MAGIC Go to Workspace -> Repos -> Find your username, and clone the repo in there.
+# MAGIC Go to Workspace -> **Repos** -> Find your username, and clone the repo in there.
 
 # COMMAND ----------
 
