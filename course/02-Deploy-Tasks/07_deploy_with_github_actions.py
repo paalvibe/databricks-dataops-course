@@ -1,6 +1,6 @@
 # Databricks notebook source
 # MAGIC %md
-# MAGIC # Deploy job(s) through Github Actions.
+# MAGIC # This is advanced, and consider it a bonus task. Deploy job(s) through Github Actions.
 # MAGIC This can be a bit of a difficult task as there are several moving parts.
 # MAGIC Normally this is setup once by your databricks admin,
 # MAGIC but having a workshop where 20 people deploy and work on the same repos not ideal, hence this approach.
