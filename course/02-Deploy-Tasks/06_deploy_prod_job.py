@@ -20,6 +20,8 @@
 # MAGIC Run the cell with autojob() with env="prod"
 # MAGIC
 # MAGIC The run the job with the python function.
+# MAGIC
+# MAGIC **hint** : this will not work, can you think of any reasons why this is the case?
 
 # COMMAND ----------
 
