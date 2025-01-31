@@ -12,16 +12,15 @@
 # MAGIC %md
 # MAGIC ## Task - Figure out how it works, step 1
 # MAGIC Go to the deploy folder in the base of the repo. Study the json file called ```deploy_job.json```
-# MAGIC which is a job definition that calls the notebook ```deploy_with_github_actions.py```
+# MAGIC which is a job definition that calls the notebook ```deploy_or_update_all_jobs.py```
 # MAGIC with the python function.
 
 # COMMAND ----------
 
 # MAGIC %md
 # MAGIC ## Task - Figure out how it works, step 2
-# MAGIC Go to the .github/workflows folder in the base of the repo. Observer the databricks repos update command.
-# MAGIC Study the file. Try to determine what it does, and how.
-# MAGIC The run the job with the python function.
+# MAGIC Go to the .github/workflows folder in the base of the repo.
+# MAGIC Study the file. Try to determine what it does, and how. Observe the databricks repos update command.
 
 # COMMAND ----------
 
