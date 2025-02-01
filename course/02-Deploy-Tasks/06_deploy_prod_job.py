@@ -31,7 +31,6 @@
 # MAGIC
 # MAGIC Ideally, the data should be written to a schema without prefix, since it is production. But we are working on the implementation. Trying to solve how to pickup up env vars signalling pipeline env prod vs dev.
 # MAGIC
-# MAGIC Which cluster did the job run on?
 
 # COMMAND ----------
 

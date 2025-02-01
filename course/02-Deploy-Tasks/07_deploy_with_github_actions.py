@@ -1,6 +1,6 @@
 # Databricks notebook source
 # MAGIC %md
-# MAGIC # Deploy job(s) through Github Actions.
+# MAGIC # This is advanced, and consider it a bonus task. Deploy job(s) through Github Actions.
 # MAGIC This can be a bit of a difficult task as there are several moving parts.
 # MAGIC Normally this is setup once by your databricks admin,
 # MAGIC but having a workshop where 20 people deploy and work on the same repos not ideal, hence this approach.
@@ -11,17 +11,16 @@
 
 # MAGIC %md
 # MAGIC ## Task - Figure out how it works, step 1
-# MAGIC Go to the deploy folder in the base of the repo. Study the json file called ```deploy.json```
-# MAGIC which is a job definition that calls the notebook ```deploy_with_github_actions.py```
+# MAGIC Go to the deploy folder in the base of the repo. Study the json file called ```deploy_job.json```
+# MAGIC which is a job definition that calls the notebook ```deploy_or_update_all_jobs.py```
 # MAGIC with the python function.
 
 # COMMAND ----------
 
 # MAGIC %md
 # MAGIC ## Task - Figure out how it works, step 2
-# MAGIC Go to the .github/workflows folder in the base of the repo. Observer the databricks repos update command.
-# MAGIC Study the file. Try to determine what it does, and how.
-# MAGIC The run the job with the python function.
+# MAGIC Go to the .github/workflows folder in the base of the repo.
+# MAGIC Study the file. Try to determine what it does, and how. Observe the databricks repos update command.
 
 # COMMAND ----------
 
@@ -38,9 +37,9 @@
 
 # MAGIC %md
 # MAGIC
-# MAGIC ## Task: Clone the repo again in the Repo folder
+# MAGIC ## Task: Clone the repo again in the **Repo** folder
 # MAGIC Note that this is not inside your workspace.
-# MAGIC Go to Workspace -> Repos -> Find your username, and clone the repo in there.
+# MAGIC Go to Workspace -> **Repos** -> Find your username, and clone the repo in there.
 
 # COMMAND ----------
 
