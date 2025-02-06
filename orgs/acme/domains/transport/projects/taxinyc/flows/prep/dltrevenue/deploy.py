@@ -1,7 +1,7 @@
 # Databricks notebook source
 # MAGIC %md
 # MAGIC
-# MAGIC # Deploy jobs defined by deployment.yml
+# MAGIC # Deploy pipelines defined by deployment.yml
 
 # COMMAND ----------
 
@@ -22,8 +22,8 @@
 # COMMAND ----------
 
 import requests
-from libs.dataops.deploy.autojob import autojob
-from libs.dataops.job import run_job_by_name
+from libs.dataops.deploy.autopipeline import autopipeline
+from libs.dataops.pipeline import run_pipeline_by_name
 
 # COMMAND ----------
 
@@ -39,11 +39,11 @@ from libs.dbname import dbname
 
 # COMMAND ----------
 
-cat = catname_from_path()
-db = dbname(db="dltrevenue_stage", cat=cat)
-print("New db name: " + db)
-spark.sql(f"USE catalog {cat}")
-spark.sql(f"CREATE DATABASE IF NOT EXISTS {db}")
+# cat = catname_from_path()
+# db = dbname(db="dltrevenue", cat=cat)
+# print("New db name: " + db)
+# spark.sql(f"USE catalog {cat}")
+# spark.sql(f"CREATE DATABASE IF NOT EXISTS {db}")
 
 # COMMAND ----------
 
@@ -52,4 +52,45 @@ spark.sql(f"CREATE DATABASE IF NOT EXISTS {db}")
 
 # COMMAND ----------
 
+# Deploy pipelines based on deployment.yml, in dev mode, specified by env param
 
+response = autopipeline(env="dev")
+
+# COMMAND ----------
+
+response
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC
+# MAGIC ### Run pipeline with python code
+
+# COMMAND ----------
+
+run_pipeline_by_name(dbutils=dbutils, pipeline_name=response['pipeline_name'])
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC
+# MAGIC ## Tasks for later
+# MAGIC ### Task: Deploy to prod
+
+# COMMAND ----------
+
+# os.environ['PIPELINE_ENV'] = 'prod'
+# Deploy pipelines based on deployment.yml, in dev mode
+# prod_response = autopipeline(env="prod")
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC
+# MAGIC ## Task: Run prod pipeline with python
+
+# COMMAND ----------
+
+# run_pipeline_by_name(dbutils=dbutils, pipeline_name=prod_response['pipeline_name'])
+
+# COMMAND ----------
