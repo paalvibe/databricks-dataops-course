@@ -13,12 +13,15 @@ def enrich_pipeline(*, cfg, dbutils, env):
     cfg["catalog"] = cat
     # Set target database/schema
     pipeline_key = new_pipeline["pipeline_key"]
-    cfg["target"] = dbname(cat=cat, db=db, env=env, dbutils=dbutils, prepend_cat=False)
+    cfg["schema"] = dbname(cat=cat, db=db, env=env, dbutils=dbutils, prepend_cat=False)
+    cfg["development"] = env == "dev"
     # For now, dlt does not support gitrefs, so we must use absolute path
     base_nb_path = nbabsfolder(dbutils)
     cfg["libraries"] = [
         {
-            "notebook": f"{base_nb_path}/{pipeline_key}",
+            "notebook": {
+                "path": f"{base_nb_path}/{pipeline_key}",
+            }
         }
     ]
     return cfg

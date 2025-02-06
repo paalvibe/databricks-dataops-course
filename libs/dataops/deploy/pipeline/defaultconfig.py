@@ -3,17 +3,15 @@ def defaultconfig():
         "name": None,
         "edition": "ADVANCED",
         "catalog": None,
-        "target": None,
+        "development": None,
+        "schema": None,
         "data_sampling": False,
         "continuous": False,
         "channel": "CURRENT",
         "photon": False,
         "pipeline_type": "WORKSPACE",
-        "clusters": [
-        ],
-        "libraries": [
-        ],
-        "parameters": [
-        ],
-        "policy_name": "dlt_default_policy"
+        "libraries": [],
+        "serverless": True,
+        "parameters": [],
+        "policy_name": "dlt_default_policy",
     }

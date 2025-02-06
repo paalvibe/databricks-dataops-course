@@ -12,7 +12,8 @@ from libs.dataops.deploy.pipeline.buildconfig import buildconfig
 
 def autopipeline(*, dbutils=None, cfgyaml="deployment.yml", env="dev"):
     """Deploy a pipeline defined in ./deployment.yml.
-    Pipeline naming and the rest of the configuration is derived from the environment."""
+    Pipeline naming and the rest of the configuration is derived from the environment.
+    """
     # Get dbutils from calling module, as databricks lib not available in UC cluster
     cfg = read_config_yaml(cfgyaml)
     print(
@@ -24,17 +25,27 @@ def autopipeline(*, dbutils=None, cfgyaml="deployment.yml", env="dev"):
     print("autopipeline.py:" + repr(23) + ":dbutils:" + repr(dbutils))
     api_token = api.api_token(dbutils)
     api_host = api.api_host(dbutils)
-    cfg["git_source"] = git_source(dbutils)
-    _depname = depname(dbutils=dbutils, env=env, git_src=cfg["git_source"])
+    git_src = git_source(dbutils)
+    _depname = depname(dbutils=dbutils, env=env, git_src=git_src)
     pipeline_name = pipelinename(dbutils=dbutils, depname=_depname)
     print(f"""deployment: {_depname}""")
     pipeline_config = buildconfig(
-        pipeline_name=pipeline_name, cfg=cfg, depname=_depname, env=env, dbutils=dbutils
+        pipeline_name=pipeline_name,
+        cfg=cfg,
+        depname=_depname,
+        env=env,
+        dbutils=dbutils,
+        git_src=git_src,
     )
-    print("\npipeline_config:\n" + json.dumps(pipeline_config, sort_keys=True, indent=4))
+    print(
+        "\npipeline_config:\n" + json.dumps(pipeline_config, sort_keys=True, indent=4)
+    )
     print("")
     response = put(
-        pipeline_name=pipeline_name, pipeline_config=pipeline_config, api_token=api_token, api_host=api_host
+        pipeline_name=pipeline_name,
+        pipeline_config=pipeline_config,
+        api_token=api_token,
+        api_host=api_host,
     )
     print("Pipeline deploy finished.")
     return {"pipeline_name": pipeline_name, "response": response}

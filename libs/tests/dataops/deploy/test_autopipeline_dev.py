@@ -71,20 +71,12 @@ def test_autopipeline_dev_create(create, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10
 
 
 DEV_EXPECTED_CONFIG = {
-    "name": "dltrevenue_paaldevibe_manual_test",
+    "name": "acme_transport_taxinyc_prep_dev_paalpeterpaalson_featuregh345revenue_aaaabbbb",
     "edition": "ADVANCED",
     "catalog": "acme_transport_taxinyc",
-    "target": "dev_paalpeterpaalson_featuregh345revenue_aaaabbbb_dltrevenue",
+    "schema": "dev_paalpeterpaalson_featuregh345revenue_aaaabbbb_dltrevenue",
     "data_sampling": False,
     "pipeline_type": "WORKSPACE",
-    "clusters": [
-        {
-            "label": "default",
-            "policy_id": "123B456789D12345",
-            "autoscale": {"min_workers": 1, "max_workers": 5, "mode": "ENHANCED"},
-        },
-        {"label": "maintenance", "policy_id": "123B456789D12345"},
-    ],
     "development": True,
     "continuous": False,
     "channel": "CURRENT",
@@ -92,10 +84,11 @@ DEV_EXPECTED_CONFIG = {
     "libraries": [
         {
             "notebook": {
-                "path": "/Repos/paalpeterpaalson@example.com/databricks-dataops-course/orgs/acme/domains/transport/projects/taxinyc/flows/prep/dltrevenue/revenue"
+                "path": "/Repos/paal-peter.paalson@foo.org/databricks-dataops-course/orgs/acme/domains/transport/projects/taxinyc/flows/prep/dltrevenue/revenue"
             }
         }
     ],
+    "serverless": True,
     "parameters": [
         {
             "default": "dev",
