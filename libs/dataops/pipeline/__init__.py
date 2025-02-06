@@ -14,11 +14,13 @@ def pipeline_by_name(*, dbutils, pipeline_name):
     ctx = dbutils.notebook.entry_point.getDbutils().notebook().getContext()
     api_host = ctx.apiUrl().get()
     api_token = ctx.apiToken().get()
-    pipelines = requests.get(
+    ret = requests.get(
         f"{api_host}/api/2.0/pipelines/list",
         headers={"Authorization": f"Bearer {api_token}"},
         json={"name": pipeline_name},
-    ).json()["pipelines"]
+    ).json()
+    print("Get pipelines response:" + repr(ret))
+    pipelines = ret["pipelines"]
     return pipelines[0]
 
 

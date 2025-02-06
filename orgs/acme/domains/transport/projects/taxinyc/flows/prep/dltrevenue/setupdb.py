@@ -16,8 +16,8 @@
 # COMMAND ----------
 
 # Enable live reloading of libs, not needed now
-# %load_ext autoreload
-# %autoreload 2
+%load_ext autoreload
+%autoreload 2
 
 # COMMAND ----------
 
@@ -44,3 +44,7 @@ db = dbname(db="dltrevenue", cat=cat)
 print("New db name: " + db)
 spark.sql(f"USE catalog {cat}")
 spark.sql(f"CREATE DATABASE IF NOT EXISTS {db}")
+
+# COMMAND ----------
+
+

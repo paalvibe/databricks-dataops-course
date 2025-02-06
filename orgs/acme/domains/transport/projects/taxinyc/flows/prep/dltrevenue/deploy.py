@@ -16,14 +16,14 @@
 # COMMAND ----------
 
 # Enable live reloading of libs, not needed now
-# %load_ext autoreload
-# %autoreload 2
+%load_ext autoreload
+%autoreload 2
 
 # COMMAND ----------
 
 import requests
 from libs.dataops.deploy.autopipeline import autopipeline
-from libs.dataops.pipeline import run_pipeline_by_name
+from libs.dataops.pipeline import run_pipeline_by_name, run_pipeline
 
 # COMMAND ----------
 
@@ -39,11 +39,11 @@ from libs.dbname import dbname
 
 # COMMAND ----------
 
-# cat = catname_from_path()
-# db = dbname(db="dltrevenue", cat=cat)
-# print("New db name: " + db)
-# spark.sql(f"USE catalog {cat}")
-# spark.sql(f"CREATE DATABASE IF NOT EXISTS {db}")
+cat = catname_from_path()
+db = dbname(db="dltrevenue", cat=cat)
+print("New db name: " + db)
+spark.sql(f"USE catalog {cat}")
+spark.sql(f"CREATE DATABASE IF NOT EXISTS {db}")
 
 # COMMAND ----------
 
@@ -65,6 +65,13 @@ response
 # MAGIC %md
 # MAGIC
 # MAGIC ### Run pipeline with python code
+
+# COMMAND ----------
+
+run_pipeline(
+    dbutils=dbutils, 
+    pipeline_id=response["response"]["pipeline_id"]
+)
 
 # COMMAND ----------
 
@@ -92,5 +99,3 @@ run_pipeline_by_name(dbutils=dbutils, pipeline_name=response['pipeline_name'])
 # COMMAND ----------
 
 # run_pipeline_by_name(dbutils=dbutils, pipeline_name=prod_response['pipeline_name'])
-
-# COMMAND ----------
