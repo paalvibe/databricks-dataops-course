@@ -8,7 +8,7 @@ def defaultconfig():
         "data_sampling": False,
         "continuous": False,
         "channel": "CURRENT",
-        "photon": False,
+        "photon": True,
         "pipeline_type": "WORKSPACE",
         "libraries": [],
         "serverless": True,
