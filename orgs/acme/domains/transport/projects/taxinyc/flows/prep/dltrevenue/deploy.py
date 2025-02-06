@@ -75,10 +75,6 @@ run_pipeline(
 
 # COMMAND ----------
 
-run_pipeline_by_name(dbutils=dbutils, pipeline_name=response['pipeline_name'])
-
-# COMMAND ----------
-
 # MAGIC %md
 # MAGIC
 # MAGIC ## Tasks for later
@@ -87,7 +83,7 @@ run_pipeline_by_name(dbutils=dbutils, pipeline_name=response['pipeline_name'])
 # COMMAND ----------
 
 # os.environ['PIPELINE_ENV'] = 'prod'
-# Deploy pipelines based on deployment.yml, in dev mode
+# # Deploy pipelines based on deployment.yml, in dev mode
 # prod_response = autopipeline(env="prod")
 
 # COMMAND ----------
@@ -98,4 +94,7 @@ run_pipeline_by_name(dbutils=dbutils, pipeline_name=response['pipeline_name'])
 
 # COMMAND ----------
 
-# run_pipeline_by_name(dbutils=dbutils, pipeline_name=prod_response['pipeline_name'])
+# run_pipeline(
+#     dbutils=dbutils, 
+#     pipeline_name=prod_response["response"]["pipeline_id"]
+# )

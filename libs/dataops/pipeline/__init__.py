@@ -30,7 +30,7 @@ def run_pipeline(*, dbutils, pipeline_id):
     api_host = ctx.apiUrl().get()
     api_token = ctx.apiToken().get()
     return requests.post(
-        f"{api_host}/api/2.0/pipelines/run-now",
+        f"{api_host}/api/2.0/pipelines/{pipeline_id}/updates",
         headers={"Authorization": f"Bearer {api_token}"},
-        json={"pipeline_id": pipeline_id},
+        json={"full_refresh": True}
     ).json()
