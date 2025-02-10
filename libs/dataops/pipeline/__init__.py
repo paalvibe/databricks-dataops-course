@@ -14,13 +14,15 @@ def pipeline_by_name(*, dbutils, pipeline_name):
     ctx = dbutils.notebook.entry_point.getDbutils().notebook().getContext()
     api_host = ctx.apiUrl().get()
     api_token = ctx.apiToken().get()
+    print(f"pipeline_name: {pipeline_name}")
     ret = requests.get(
-        f"{api_host}/api/2.0/pipelines/list",
+        f"{api_host}/api/2.0/pipelines",
         headers={"Authorization": f"Bearer {api_token}"},
-        json={"name": pipeline_name},
-    ).json()
+        # equals is not supported, so use strict like
+        params={"filter": f"name like '{pipeline_name}%'"},
+     ).json()
     print("Get pipelines response:" + repr(ret))
-    pipelines = ret["pipelines"]
+    pipelines = ret["statuses"]
     return pipelines[0]
 
 
