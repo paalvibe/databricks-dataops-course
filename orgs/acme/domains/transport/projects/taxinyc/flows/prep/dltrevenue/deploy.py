@@ -68,10 +68,25 @@ response
 
 # COMMAND ----------
 
+response
+
+# COMMAND ----------
+
+response = {"pipeline_name": "acme_transport_taxinyc_prep_dev_paal_autopipeline_94c670c4"}
+
+# COMMAND ----------
+
+# For now we will not run pipeline by id, but name instead
+# as it survives a cluster reconnect, since name is idempotent
 run_pipeline(
     dbutils=dbutils, 
     pipeline_id=response["response"]["pipeline_id"]
 )
+
+# COMMAND ----------
+
+run_pipeline_by_name(dbutils=dbutils, 
+    pipeline_name=response["pipeline_name"])
 
 # COMMAND ----------
 
