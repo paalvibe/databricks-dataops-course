@@ -1,0 +1,20 @@
+# This is where to define jobs and tasks for
+# this flow (pipeline).
+#
+# The structure somewhat follows the Jobs API
+# and the Delta Live Tables API for jobs and
+# pipelines respectively.
+#
+# Jobs API: https://docs.databricks.com/dev-tools/api/latest/jobs.html
+# Delta Live Tables API: https://docs.databricks.com/api/workspace/pipelines.html
+
+---
+# # Add schedule if wanted
+# schedule:
+#   quartz_cron_expression: 27 0 16 ? * Thu
+#   timezone_id: Europe/Brussels
+#   pause_status: UNPAUSED
+pipeline_tasks:
+- pipeline_key: revenue
+  # policy_name: dlt_default_policy
+  db: dltrevenue

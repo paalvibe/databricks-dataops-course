@@ -59,8 +59,9 @@ run_job_by_name(dbutils=dbutils, job_name=response['job_name'])
 
 # COMMAND ----------
 
+# Deploy jobs based on deployment.yml, in prod mode
+# import os
 # os.environ["DEPLOYMENT_ENV"] = "prod"
-# Deploy jobs based on deployment.yml, in dev mode
 # prod_response = autojob(env="prod")
 
 # COMMAND ----------

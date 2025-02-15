@@ -1,10 +1,10 @@
 # dbutils must be passed in as param as databricks lib not available in UC cluster
-# from databricks.sdk.runtime import dbutils
+# from databricks.sdk.deployment import dbutils
 import inspect
 import re
 from libs.username import username
 from libs.dataops.deploy.repo import git_source
-from libs.dataops.deploy.pipelineenv import pipelineenv
+from libs.dataops.deploy.deploymentenv import deploymentenv
 
 
 def dbname(
@@ -13,6 +13,7 @@ def dbname(
     cat="training",
     env="dev",
     dbutils=None,
+    prepend_cat=True,
 ):
     if not dbutils:
         # Get dbutils from calling module, as databricks lib not available in UC cluster
@@ -20,9 +21,10 @@ def dbname(
     if not db:
         raise ValueError("db must be a non-empty string")
     db_prefix = dbprefix(env=env, dbutils=dbutils)
-    return f"{cat}.{db_prefix}{db}"
-    # ignore catalog for now, until UC is enabled
-    # return f"{db_prefix}{db}"
+    db_only = f"{db_prefix}{db}"
+    if prepend_cat:
+        return f"{cat}.{db_only}"
+    return db_only
 
 
 def dbprefix(*, env, dbutils):
@@ -50,8 +52,11 @@ def _git_src_from_widget_params(dbutils):
 
 def _depname(*, dbutils, env):
     """Compose deployment prefix from env and git config"""
-    pipeline_env = pipelineenv(dbutils)
-    if pipeline_env == "prod":
+    # Allow env var override of env:
+    deployment_env_override = deploymentenv(dbutils)
+    if deployment_env_override:
+        env = deployment_env_override
+    if env == "prod":
         return ""
     dep_prefix = env
     # Only include username in `dev`, we don't want it in `staging`

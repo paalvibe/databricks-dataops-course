@@ -21,7 +21,7 @@
 # MAGIC to:
 # MAGIC
 # MAGIC ```
-# MAGIC .withColumn("rounded_amount", F.round("amount", 2))
+# MAGIC .withColumn("full_amount", F.round("amount", 2))
 # MAGIC ```
 
 # COMMAND ----------

@@ -5,9 +5,9 @@ from libs.dataops.deploy.readconfig import read_config_yaml
 from libs.dataops.deploy.repo import git_source
 from libs.dataops.deploy import api
 from libs.dataops.deploy.depname import depname as _depname
-from libs.dataops.deploy.put import put
-from libs.dataops.deploy.jobname import jobname
-from libs.dataops.deploy.buildconfig import buildconfig
+from libs.dataops.deploy.job.put import put
+from libs.dataops.deploy.job.jobname import jobname
+from libs.dataops.deploy.job.buildconfig import buildconfig
 
 
 def autojob(*, dbutils=None, cfgyaml="deployment.yml", env="dev"):

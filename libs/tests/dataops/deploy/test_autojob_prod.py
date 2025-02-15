@@ -27,22 +27,22 @@ FULLNBPATH = f"/Repos/{DBRICKS_USERNAME}/databricks-dataops-course/{DEPLOY_NB_PA
 @mock.patch("libs.dataops.deploy.repo._get_repo", return_value=REPO)
 @mock.patch("libs.username.databricks_email", return_value=DBRICKS_USERNAME)
 @mock.patch(
-    "libs.dataops.deploy.buildconfig.databricks_email", return_value=DBRICKS_USERNAME
+    "libs.dataops.deploy.job.buildconfig.databricks_email", return_value=DBRICKS_USERNAME
 )
 @mock.patch(
     "libs.dataops.deploy.nbpath.nbpath",
     return_value=FULLNBPATH,
 )
 @mock.patch(
-    "libs.dataops.deploy.jobname.nbpath",
+    "libs.dataops.deploy.job.jobname.nbpath",
     return_value=FULLNBPATH,
 )
-@mock.patch("libs.dataops.deploy.job._get_job", return_value=[])
-@mock.patch("libs.dataops.deploy.put._create")
+@mock.patch("libs.dataops.deploy.job.get._get_jobs", return_value=[])
+@mock.patch("libs.dataops.deploy.job.put._create")
 def test_autojob_prod_create(create, p1, p2, p3, p4, p5, p6, p7, p8, p9):
     autojob(
         dbutils="something",
-        cfgyaml="./libs/tests/dataops/deploy/mock_data/deployment.yml",
+        cfgyaml="./libs/tests/dataops/deploy/mock_data/job/deployment.yml",
         env="prod",
     )
     create_cnt = create.call_count
@@ -137,7 +137,7 @@ PROD_EXPECTED_CONFIG = {
         },
     ],
     "parameters": [
-        {"default": "prod", "name": "pipeline_env"},
+        {"default": "prod", "name": "deployment_env"},
         {
             "default": "https://github.com/paalvibe/databricks-dataops-course",
             "name": "git_url",

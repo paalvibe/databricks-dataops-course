@@ -1,5 +1,5 @@
 from libs.dataops.deploy.nbpath import nbrelfolder
-from libs.dataops.deploy.buildconfig.clusters import env_cluster_key, lookup_cluster_id
+from libs.dataops.deploy.job.buildconfig.clusters import env_cluster_key, lookup_cluster_id
 
 
 def enrich_tasks(*, cfg, dbutils, env):

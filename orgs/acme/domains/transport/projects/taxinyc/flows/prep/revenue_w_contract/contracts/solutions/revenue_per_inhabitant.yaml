@@ -1,0 +1,93 @@
+dataContractSpecification: 1.1.0
+id: urn:datacontract:analytics:revenue-per-inhabitant
+info:
+  title: Revenue per Inhabitant
+  version: 1.0.0
+  description: |
+    Revenue metrics per inhabitant across different boroughs.
+    Contains population statistics and revenue distribution data.
+  owner: ACME NYC Taxi Revenue Team
+  contact:
+    name: Magnus the Law-amender
+    url: https://acmenotreal.com/l/channel/revenue/revenue-analytics
+servers:
+  production:
+    type: databricks
+    host: dbc-639f4875-165d.cloud.databricks.com
+    catalog: acme_transport_taxinyc
+    schema: revenue
+terms:
+  usage: >
+    Data can be used for revenue analysis, population studies, and business intelligence.
+    Borough data may be joined with other geographic or demographic tables.
+  limitations: >
+    Not suitable for real-time analytics.
+    Data should be aggregated when presented in public reports.
+    Max data processing per day: 5 TiB
+  billing: 2000 Monopoly dollars per month
+  noticePeriod: P1M
+models:
+  revenue_per_inhabitant:
+    description: Revenue metrics normalized by borough population
+    type: table
+    fields:
+      pickup_borough:
+        $ref: '#/definitions/borough_name'
+        required: true
+      amount:
+        description: Total revenue amount in the smallest monetary unit (cents)
+        type: double
+        required: true
+      borough:
+        $ref: '#/definitions/borough_name'
+        required: true
+      population:
+        description: Total population count in the borough
+        type: integer
+        required: true
+        minimum: 1
+      population_share:
+        description: Percentage of total city population
+        type: float
+        required: true
+        minimum: 0
+        maximum: 100
+      revenue_per_inhabitant:
+        description: Average revenue per person in the borough
+        type: double
+        required: true
+        minimum: 0
+definitions:
+  borough_name:
+    domain: geography
+    name: borough
+    title: Borough Name
+    type: string
+    enum:
+      - Manhattan
+      - Brooklyn
+      - Queens
+      - Bronx
+      - Staten Island
+    description: One of the five boroughs of the city
+    example: "Manhattan"
+examples:
+  - type: csv
+    model: revenue_per_inhabitant
+    data: |-
+      pickup_borough,amount,borough,population,population_share,revenue_per_inhabitant
+      "Manhattan",1500000,"Manhattan",1628706,0.19,920.98
+      "Brooklyn",2000000,"Brooklyn",2648452,0.31,755.17
+      "Queens",1800000,"Queens",2278906,0.27,789.85
+      "Bronx",1000000,"Bronx",1472654,0.17,679.05
+      "Staten Island",500000,"Staten Island",479458,0.06,1042.84
+quality:
+  type: SodaCL
+  specification:
+    checks for revenue_per_inhabitant:
+      - row_count = 5
+      - duplicate_count(pickup_borough) = 0
+      - sum(population_share) between 99 and 101
+      - min(population) > 0
+      - min(amount) >= 0
+      - min(revenue_per_inhabitant) >= 0

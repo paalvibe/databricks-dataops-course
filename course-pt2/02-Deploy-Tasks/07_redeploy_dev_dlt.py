@@ -21,7 +21,7 @@
 # MAGIC to:
 # MAGIC
 # MAGIC ```
-# MAGIC .withColumn("rounded_amount", F.round("amount", 2))
+# MAGIC .withColumn("full_amount", F.round("amount", 2))
 # MAGIC ```
 
 # COMMAND ----------
@@ -35,7 +35,7 @@
 
 # MAGIC %md
 # MAGIC
-# MAGIC Go to the notebook orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue/deploy, and run the autojob cell again.
+# MAGIC Go to the notebook orgs/acme/domains/transport/projects/taxinyc/flows/prep/dltrevenue/deploy, and run the autojob cell again.
 # MAGIC
 # MAGIC Note that the output will say `Resetting job` instead of `Creating job`.
 # MAGIC

@@ -50,8 +50,8 @@ CLUSTER_LIST_RESPONSE = [
     "libs.dataops.deploy.buildconfig.clusters._get_clusters",
     return_value=CLUSTER_LIST_RESPONSE,
 )
-@mock.patch("libs.dataops.deploy.job._get_job", return_value=[])
-@mock.patch("libs.dataops.deploy.put._create")
+@mock.patch("libs.dataops.deploy.job.get._get_jobs", return_value=[])
+@mock.patch("libs.dataops.deploy.job.put._create")
 def test_tblname(create, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10):
     name = tblname(
         tbl="trips", db="nyc_workshop", cat="training", env="dev", dbutils="something"
@@ -61,9 +61,9 @@ def test_tblname(create, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10):
         == "training.dev_paalpeterpaalson_featuregh345revenue_aaaabbbb_nyc_workshop.trips"
     )
 
-    os.environ["PIPELINE_ENV"] = "prod"
+    os.environ["DEPLOYMENT_ENV"] = "prod"
     prodname = tblname(
         tbl="trips", db="nyc_workshop", cat="training", dbutils="something"
     )
-    del os.environ["PIPELINE_ENV"]
+    del os.environ["DEPLOYMENT_ENV"]
     assert prodname == "training.nyc_workshop.trips"
