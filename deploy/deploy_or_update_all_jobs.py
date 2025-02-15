@@ -2,9 +2,10 @@
 import concurrent.futures
 from pathlib import Path
 
-# This is intentionally constrained to my personal git repo, and a specific project for demo purposes
-# in the course. In a real-world scenario, you would likely find jobs from multiple domains and projects
-# and ensure that a service_principal is used for deployment.
+# This is intentionally constrained to a user's git repo, and a specific project for demo purposes.
+# In a real-world scenario, you would likely find jobs from multiple domains and projects
+# and ensure that a service_principal is used for deployment, as well as using a single git repo
+# as the source of truth
 
 deploy_notebooks = [
     str(path)
