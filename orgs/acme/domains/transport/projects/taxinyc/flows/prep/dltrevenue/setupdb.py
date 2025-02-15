@@ -21,12 +21,6 @@
 
 # COMMAND ----------
 
-import requests
-from libs.dataops.deploy.autojob import autojob
-from libs.dataops.job import run_job_by_name
-
-# COMMAND ----------
-
 # Name functions enables automatic env+user specific database naming
 from libs.catname import catname_from_path
 from libs.dbname import dbname

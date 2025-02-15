@@ -25,8 +25,6 @@ def dbname(
     if prepend_cat:
         return f"{cat}.{db_only}"
     return db_only
-    # ignore catalog for now, until UC is enabled
-    # return f"{db_prefix}{db}"
 
 
 def dbprefix(*, env, dbutils):
@@ -54,8 +52,11 @@ def _git_src_from_widget_params(dbutils):
 
 def _depname(*, dbutils, env):
     """Compose deployment prefix from env and git config"""
-    deployment_env = deploymentenv(dbutils)
-    if deployment_env == "prod":
+    # Allow env var override of env:
+    deployment_env_override = deploymentenv(dbutils)
+    if deployment_env_override:
+        env = deployment_env_override
+    if env == "prod":
         return ""
     dep_prefix = env
     # Only include username in `dev`, we don't want it in `staging`

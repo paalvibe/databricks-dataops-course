@@ -1,8 +1,0 @@
-{
-  "name": "Example pipeline 3",
-  "storage": "dbfs:/pipeline-examples/storage-location/example3",
-  "libraries": [
-    { "notebook": { "path": "/dltrevenue.py" } },
-
-  ]
-}

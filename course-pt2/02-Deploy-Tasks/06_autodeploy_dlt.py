@@ -10,7 +10,7 @@
 # MAGIC
 # MAGIC ## Study: deployment.yml
 # MAGIC
-# MAGIC Look at `orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue/deployment.yml`.
+# MAGIC Look at `orgs/acme/domains/transport/projects/taxinyc/flows/prep/dltrevenue/deployment.yml`.
 # MAGIC It defines the job which will run the pipeline.
 
 # COMMAND ----------
@@ -19,7 +19,7 @@
 # MAGIC
 # MAGIC ## Task: Run dev deploy
 # MAGIC
-# MAGIC 1. Go to the notebook orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue/deploy
+# MAGIC 1. Go to the notebook orgs/acme/domains/transport/projects/taxinyc/flows/prep/dltrevenue/deploy
 # MAGIC 2. Connect to serverless compute.
 # MAGIC 3. Run the cells up to and including deploying and running the dev job.
 
@@ -27,21 +27,15 @@
 
 # MAGIC %md
 # MAGIC
-# MAGIC ## Task: Look for the job under Job Runs
+# MAGIC ## Task: Look for the job under Delta Live Tables
 # MAGIC
-# MAGIC Job Runs are on the side menu
+# MAGIC Delta Live Tables can be found on the left side menu
 
 # COMMAND ----------
 
 # MAGIC %md
 # MAGIC
-# MAGIC ## Task: Run the job by pressing the run button in the UI
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC
-# MAGIC ## Task: What is the difference between a job and a job run?
+# MAGIC ## Task: What is the difference between a (Delta Live Tables) Pipeline and a (Delta Live Tables) Pipeline run?
 
 # COMMAND ----------
 

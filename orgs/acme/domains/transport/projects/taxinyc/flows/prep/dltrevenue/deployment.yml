@@ -16,5 +16,5 @@
 #   pause_status: UNPAUSED
 pipeline_tasks:
 - pipeline_key: revenue
-  policy_name: dlt_default_policy
+  # policy_name: dlt_default_policy
   db: dltrevenue

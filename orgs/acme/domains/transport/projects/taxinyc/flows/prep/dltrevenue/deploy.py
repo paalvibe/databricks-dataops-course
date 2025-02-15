@@ -15,9 +15,9 @@
 
 # COMMAND ----------
 
-# Enable live reloading of libs, not needed now
-%load_ext autoreload
-%autoreload 2
+# # Enable live reloading of libs, not needed now
+# %load_ext autoreload
+# %autoreload 2
 
 # COMMAND ----------
 
@@ -55,9 +55,6 @@ spark.sql(f"CREATE DATABASE IF NOT EXISTS {db}")
 # Deploy pipelines based on deployment.yml, in dev mode, specified by env param
 
 response = autopipeline(env="dev")
-
-# COMMAND ----------
-
 response
 
 # COMMAND ----------
@@ -65,14 +62,6 @@ response
 # MAGIC %md
 # MAGIC
 # MAGIC ### Run pipeline with python code
-
-# COMMAND ----------
-
-response
-
-# COMMAND ----------
-
-response = {"pipeline_name": "acme_transport_taxinyc_prep_dev_paal_autopipeline_94c670c4"}
 
 # COMMAND ----------
 
@@ -85,8 +74,9 @@ run_pipeline(
 
 # COMMAND ----------
 
-run_pipeline_by_name(dbutils=dbutils, 
-    pipeline_name=response["pipeline_name"])
+# Can be used when the pipeline created has the same name as one previously recreated
+# run_pipeline_by_name(dbutils=dbutils, 
+#    pipeline_name=response["pipeline_name"])
 
 # COMMAND ----------
 
@@ -97,7 +87,8 @@ run_pipeline_by_name(dbutils=dbutils,
 
 # COMMAND ----------
 
-# os.environ['PIPELINE_ENV'] = 'prod'
+# import os
+# os.environ["DEPLOYMENT_ENV"] = "prod"
 # # Deploy pipelines based on deployment.yml, in dev mode
 # prod_response = autopipeline(env="prod")
 
@@ -111,5 +102,9 @@ run_pipeline_by_name(dbutils=dbutils,
 
 # run_pipeline(
 #     dbutils=dbutils, 
-#     pipeline_name=prod_response["response"]["pipeline_id"]
+#     pipeline_id=prod_response["response"]["pipeline_id"]
 # )
+
+# COMMAND ----------
+
+
