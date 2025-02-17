@@ -8,7 +8,7 @@
 
 # MAGIC %md ### 0. Select a cluster
 # MAGIC
-# MAGIC Press the Connect dropdown in the upper left menu, and select UC Shared cluster 1/2/3/4 etc
+# MAGIC Press the Connect dropdown in the upper left menu, and select Serverless etc
 
 # COMMAND ----------
 

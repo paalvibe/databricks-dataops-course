@@ -50,7 +50,7 @@
 # MAGIC
 # MAGIC 1. Go to `orgs/acme/domains/transport/projects/taxinyc/flows/prep/dltrevenue/revenue`
 # MAGIC 2. Study the code, and compare to the corresponding pyspark pipelines in `orgs/acme/domains/transport/projects/taxinyc/flows/prep/dltrevenue/`.
-# MAGIC 3. Go to the Delta Live Tables menu under Data Engineering on the right side menu
+# MAGIC 3. Go to the Delta Live Tables menu under Data Engineering on the left side menu
 # MAGIC 4. Press `Create pipeline`
 # MAGIC     1. `Pipeline name`: `dltrevenue_[your username]_manual_test`
 # MAGIC     2. `Product edition`: `Advanced`
