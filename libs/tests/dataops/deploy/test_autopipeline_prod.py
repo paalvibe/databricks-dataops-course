@@ -9,7 +9,7 @@ REPO_STATUS = {"object_id": "foo"}
 REPO = {
     "url": "https://github.com/paalvibe/databricks-dataops-course",
     "provider": "gitHub",
-    "branch": "feature/gh-345-revenue",
+    "branch": "main",
     "head_commit_id": "aaaabbbb2a48e1a5fc5b9b40746c82f81cce1111",
 }
 
@@ -37,7 +37,7 @@ POLICIES_LIST_RESPONSE = [
 @mock.patch("libs.dbname.username", return_value=DBRICKS_USERNAME)
 @mock.patch("libs.dataops.deploy.repo._get_status", return_value=REPO_STATUS)
 @mock.patch("libs.dataops.deploy.repo._get_repo", return_value=REPO)
-@mock.patch("libs.dbname.deploymentenv", return_value="dev")
+@mock.patch("libs.dbname.deploymentenv", return_value="prod")
 @mock.patch("libs.username.databricks_email", return_value=DBRICKS_EMAIL)
 @mock.patch(
     "libs.dataops.deploy.nbpath.nbpath",
@@ -53,36 +53,34 @@ POLICIES_LIST_RESPONSE = [
 )
 @mock.patch("libs.dataops.deploy.pipeline.get._get_pipelines", return_value=[])
 @mock.patch("libs.dataops.deploy.pipeline.put._create")
-def test_autopipeline_dev_create(
+def test_autopipeline_prod_create(
     create, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12
 ):
     autopipeline(
         dbutils=MagicMock(),
-        cfgyaml="./libs/tests/dataops/deploy/mock_data/pipeline/deployment_dev.yml",
+        env="prod",
+        cfgyaml="./libs/tests/dataops/deploy/mock_data/pipeline/deployment_prod.yml",
     )
     create_cnt = create.call_count
     assert create_cnt == 1
     create_call = create.call_args_list[0]
     pipeline_name = create_call.kwargs.get("pipeline_name")
-    assert (
-        pipeline_name
-        == "acme_transport_taxinyc_prep_dev_magnuslawmender_featuregh345revenue_aaaabbbb"
-    )
+    assert pipeline_name == "acme_transport_taxinyc_prep_prod_main_aaaabbbb"
     pipeline_config = create_call.kwargs.get("pipeline_config")
     print(
         "test_autopipeline.py:" + repr(37) + ":pipeline_config:" + repr(pipeline_config)
     )
-    assert pipeline_config == DEV_EXPECTED_CONFIG
+    assert pipeline_config == PROD_EXPECTED_CONFIG
 
 
-DEV_EXPECTED_CONFIG = {
-    "name": "acme_transport_taxinyc_prep_dev_magnuslawmender_featuregh345revenue_aaaabbbb",
+PROD_EXPECTED_CONFIG = {
+    "name": "acme_transport_taxinyc_prep_prod_main_aaaabbbb",
     "edition": "ADVANCED",
     "catalog": "acme_transport_taxinyc",
-    "schema": "dev_magnuslawmender_featuregh345revenue_aaaabbbb_dltrevenue",
+    "schema": "dltrevenue",
     "data_sampling": False,
     "pipeline_type": "WORKSPACE",
-    "development": True,
+    "development": False,
     "continuous": False,
     "channel": "CURRENT",
     "photon": True,
@@ -96,7 +94,7 @@ DEV_EXPECTED_CONFIG = {
     "serverless": True,
     "parameters": [
         {
-            "default": "dev",
+            "default": "prod",
             "name": "deployment_env",
         },
         {
@@ -104,7 +102,7 @@ DEV_EXPECTED_CONFIG = {
             "name": "git_url",
         },
         {
-            "default": "feature/gh-345-revenue",
+            "default": "main",
             "name": "git_branch",
         },
         {
@@ -113,9 +111,9 @@ DEV_EXPECTED_CONFIG = {
         },
     ],
     "tags": {
-        "deployment": "dev_magnuslawmender_featuregh345revenue_aaaabbbb",
-        "env": "dev",
-        "git_branch": "feature/gh-345-revenue",
+        "deployment": "prod_main_aaaabbbb",
+        "env": "prod",
+        "git_branch": "main",
         "git_commit": "aaaabbbb2a48e1a5fc5b9b40746c82f81cce1111",
         "git_url": "https://github.com/paalvibe/databricks-dataops-course",
     },

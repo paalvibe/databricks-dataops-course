@@ -11,6 +11,4 @@
 ---
 pipeline_tasks:
 - pipeline_key: revenue
-  policy_name: dlt_default_policy
-  cluster_template: common_dlt
   db: dltrevenue

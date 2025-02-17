@@ -35,7 +35,8 @@ CLUSTER_LIST_RESPONSE = [
 @mock.patch("libs.dataops.deploy.repo._get_repo", return_value=REPO)
 @mock.patch("libs.username.databricks_email", return_value=DBRICKS_USERNAME)
 @mock.patch(
-    "libs.dataops.deploy.job.buildconfig.databricks_email", return_value=DBRICKS_USERNAME
+    "libs.dataops.deploy.job.buildconfig.databricks_email",
+    return_value=DBRICKS_USERNAME,
 )
 @mock.patch(
     "libs.dataops.deploy.nbpath.nbpath",
@@ -83,7 +84,7 @@ DEV_EXPECTED_CONFIG = {
     "max_concurrent_runs": 1,
     "tasks": [
         {
-            "existing_cluster_id": "1234-567890-fooo123",
+            "existing_cluster_name": "shared-job-cluster",
             "notebook_task": {
                 "notebook_path": "orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue/revenue_by_borough",
                 "source": "GIT",
@@ -92,7 +93,7 @@ DEV_EXPECTED_CONFIG = {
             "task_key": "revenue_by_borough",
         },
         {
-            "existing_cluster_id": "1234-567890-fooo123",
+            "existing_cluster_name": "shared-job-cluster",
             "notebook_task": {
                 "notebook_path": "orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue/revenue_by_tripmonth",
                 "source": "GIT",
@@ -101,7 +102,7 @@ DEV_EXPECTED_CONFIG = {
             "task_key": "revenue_by_tripmonth",
         },
         {
-            "existing_cluster_id": "1234-567890-fooo123",
+            "existing_cluster_name": "shared-job-cluster",
             "notebook_task": {
                 "notebook_path": "orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue/borough_population",
                 "source": "GIT",

@@ -35,7 +35,7 @@
 
 # MAGIC %md
 # MAGIC
-# MAGIC Go to the notebook orgs/acme/domains/transport/projects/taxinyc/flows/prep/dltrevenue/deploy, and run the autojob cell again.
+# MAGIC Go to the notebook orgs/acme/domains/transport/projects/taxinyc/flows/prep/dltrevenue/deploy, and run the autopipeline() cell again.
 # MAGIC
 # MAGIC Note that the output will say `Resetting job` instead of `Creating job`.
 # MAGIC

@@ -49,7 +49,7 @@ expected_schema = StructType([
 @pytest.fixture()
 def expected_data():
     return [
-        [date(2010, 12, 31), 10],
+        [date(2010, 12, 31), 11],
         [date(2015, 5, 31), 7],
         [date(2020, 6, 15), 2],
         [date(2022, 6, 15), 0]

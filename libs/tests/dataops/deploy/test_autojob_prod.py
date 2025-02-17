@@ -8,7 +8,7 @@ REPO_STATUS = {"object_id": "foo"}
 REPO = {
     "url": "https://github.com/paalvibe/databricks-dataops-course",
     "provider": "gitHub",
-    "branch": "feature/gh-345-revenue",
+    "branch": "main",
     "head_commit_id": "aaaabbbb2a48e1a5fc5b9b40746c82f81cce1111",
 }
 
@@ -27,7 +27,8 @@ FULLNBPATH = f"/Repos/{DBRICKS_USERNAME}/databricks-dataops-course/{DEPLOY_NB_PA
 @mock.patch("libs.dataops.deploy.repo._get_repo", return_value=REPO)
 @mock.patch("libs.username.databricks_email", return_value=DBRICKS_USERNAME)
 @mock.patch(
-    "libs.dataops.deploy.job.buildconfig.databricks_email", return_value=DBRICKS_USERNAME
+    "libs.dataops.deploy.job.buildconfig.databricks_email",
+    return_value=DBRICKS_USERNAME,
 )
 @mock.patch(
     "libs.dataops.deploy.nbpath.nbpath",
@@ -49,14 +50,14 @@ def test_autojob_prod_create(create, p1, p2, p3, p4, p5, p6, p7, p8, p9):
     assert create_cnt == 1
     create_call = create.call_args_list[0]
     job_name = create_call.kwargs.get("job_name")
-    assert job_name == "acme_transport_taxinyc_prep_prod_featuregh345revenue_aaaabbbb"
+    assert job_name == "acme_transport_taxinyc_prep_prod_main_aaaabbbb"
     job_config = create_call.kwargs.get("job_config")
     print("test_autojob.py:" + repr(37) + ":job_config:" + repr(job_config))
     assert job_config == PROD_EXPECTED_CONFIG
 
 
 PROD_EXPECTED_CONFIG = {
-    "name": "acme_transport_taxinyc_prep_prod_featuregh345revenue_aaaabbbb",
+    "name": "acme_transport_taxinyc_prep_prod_main_aaaabbbb",
     "email_notifications": {
         "no_alert_for_skipped_runs": False,
     },
@@ -66,7 +67,7 @@ PROD_EXPECTED_CONFIG = {
         "pause_status": "UNPAUSED",
     },
     "git_source": {
-        "git_branch": "feature/gh-345-revenue",
+        "git_branch": "main",
         "git_commit": "aaaabbbb2a48e1a5fc5b9b40746c82f81cce1111",
         "git_provider": "gitHub",
         "git_url": "https://github.com/paalvibe/databricks-dataops-course",
@@ -74,7 +75,7 @@ PROD_EXPECTED_CONFIG = {
     "max_concurrent_runs": 1,
     "tasks": [
         {
-            "job_cluster_key": "common-job-cluster-prod",
+            "job_cluster_key": "common-job-cluster",
             "notebook_task": {
                 "notebook_path": "orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue/revenue_by_borough",
                 "source": "GIT",
@@ -83,7 +84,7 @@ PROD_EXPECTED_CONFIG = {
             "task_key": "revenue_by_borough",
         },
         {
-            "job_cluster_key": "common-job-cluster-prod",
+            "job_cluster_key": "common-job-cluster",
             "notebook_task": {
                 "notebook_path": "orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue/revenue_by_tripmonth",
                 "source": "GIT",
@@ -92,7 +93,7 @@ PROD_EXPECTED_CONFIG = {
             "task_key": "revenue_by_tripmonth",
         },
         {
-            "job_cluster_key": "common-job-cluster-prod",
+            "job_cluster_key": "common-job-cluster",
             "notebook_task": {
                 "notebook_path": "orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue/borough_population",
                 "source": "GIT",
@@ -109,7 +110,7 @@ PROD_EXPECTED_CONFIG = {
                     "task_key": "borough_population",
                 },
             ],
-            "job_cluster_key": "common-job-cluster-prod",
+            "job_cluster_key": "common-job-cluster",
             "notebook_task": {
                 "notebook_path": "orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue/revenue_by_inhabitant",
                 "source": "GIT",
@@ -118,40 +119,23 @@ PROD_EXPECTED_CONFIG = {
             "task_key": "revenue_by_inhabitant",
         },
     ],
-    "job_clusters": [
-        {
-            "job_cluster_key": "common-job-cluster-prod",
-            "new_cluster": {
-                "aws_attributes": {
-                    "availability": "SPOT_WITH_FALLBACK",
-                    "zone_id": "eu-central-1a",
-                },
-                "cluster_name": "",
-                "data_security_mode": "SINGLE_USER",
-                "enable_elastic_disk": False,
-                "job_cluster_key": False,
-                "node_type_id": "i3.xlarge",
-                "num_workers": 1,
-                "spark_version": "14.1.x-scala2.12",
-            },
-        },
-    ],
+    "job_clusters": [],
     "parameters": [
         {"default": "prod", "name": "deployment_env"},
         {
             "default": "https://github.com/paalvibe/databricks-dataops-course",
             "name": "git_url",
         },
-        {"default": "feature/gh-345-revenue", "name": "git_branch"},
+        {"default": "main", "name": "git_branch"},
         {"default": "aaaabbbb2a48e1a5fc5b9b40746c82f81cce1111", "name": "git_commit"},
     ],
     "run_as": {
         "user_name": "paal-peter.paalson@foo.org",
     },
     "tags": {
-        "deployment": "prod_featuregh345revenue_aaaabbbb",
+        "deployment": "prod_main_aaaabbbb",
         "env": "prod",
-        "git_branch": "feature/gh-345-revenue",
+        "git_branch": "main",
         "git_commit": "aaaabbbb2a48e1a5fc5b9b40746c82f81cce1111",
         "git_url": "https://github.com/paalvibe/databricks-dataops-course",
     },
