@@ -38,7 +38,7 @@
 # MAGIC
 # MAGIC ## Task: Set up at DLT pipeline run.
 # MAGIC
-# MAGIC For each notebook, connect to the UC Shared Cluster you have been assigned, and run through the cells. Study the cells as you run them.
+# MAGIC For each notebook, connect to Serverless, and run through the cells. Study the cells as you run them.
 # MAGIC
 # MAGIC ### Setup the database schema where we will write data
 # MAGIC
@@ -48,7 +48,7 @@
 # MAGIC
 # MAGIC ### Run the DLT pipeline
 # MAGIC
-# MAGIC 3. Go to the Delta Live Tables menu under Data Engineering on the right side menu
+# MAGIC 3. Go to the Delta Live Tables menu under Data Engineering on the left side menu
 # MAGIC 4. Press `Create pipeline`
 # MAGIC     1. `Pipeline name`: `dltrevenue_w_dq_[your username]_manual_test`
 # MAGIC     2. `Product edition`: `Advanced`
