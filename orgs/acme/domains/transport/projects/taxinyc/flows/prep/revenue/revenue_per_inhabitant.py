@@ -5,6 +5,10 @@
 
 # COMMAND ----------
 
+# MAGIC %pip install brickops==0.3.12
+
+# COMMAND ----------
+
 # MAGIC %load_ext autoreload
 # MAGIC %autoreload 2
 
@@ -14,8 +18,8 @@
 from pyspark.sql import functions as F
 
 # Name functions enables automatic env+user specific database naming
-from libs.tblname import tblname
-from libs.catname import catname_from_path
+from brickops.datamesh.naming import build_table_name as tablename
+from brickops.datamesh.naming import catname_from_path
 
 # COMMAND ----------
 
@@ -36,7 +40,7 @@ print(f"catalog: {catalog}")
 
 # COMMAND ----------
 
-revenue_by_borough_tbl = tblname(cat=catalog, db="revenue", tbl="revenue_by_borough")
+revenue_by_borough_tbl = tablename(cat=catalog, db="revenue", tbl="revenue_by_borough")
 print("revenue_by_borough_tbl:" + repr(revenue_by_borough_tbl))
 revenue_by_borough_df = spark.sql(f"select * from {revenue_by_borough_tbl}")
 revenue_by_borough_df.display()
@@ -48,7 +52,7 @@ revenue_by_borough_df.display()
 
 # COMMAND ----------
 
-borough_population_tbl = tblname(cat=catalog, db="revenue", tbl="borough_population")
+borough_population_tbl = tablename(cat=catalog, db="revenue", tbl="borough_population")
 print("borough_population_tbl:" + repr(borough_population_tbl))
 borough_population_df = spark.sql(f"select * from {borough_population_tbl}")
 borough_population_df.display()
@@ -84,7 +88,7 @@ revenue_per_inhabitant_df.display()
 
 # COMMAND ----------
 
-revenue_per_inhabitant_tbl = tblname(cat=catalog, db="revenue", tbl="revenue_per_inhabitant")
+revenue_per_inhabitant_tbl = tablename(cat=catalog, db="revenue", tbl="revenue_per_inhabitant")
 print("revenue_per_inhabitant_tbl:" + repr(revenue_per_inhabitant_tbl))
 (
     revenue_per_inhabitant_df.write.mode("overwrite")

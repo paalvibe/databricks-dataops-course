@@ -5,7 +5,7 @@
 
 # COMMAND ----------
 
-!pip install pyyaml
+!pip install brickops==0.3.12
 
 # COMMAND ----------
 
@@ -22,8 +22,8 @@
 # COMMAND ----------
 
 # Name functions enables automatic env+user specific database naming
-from libs.catname import catname_from_path
-from libs.dbname import dbname
+from brickops.datamesh.naming import catname_from_path
+from brickops.datamesh.naming import dbname
 
 # COMMAND ----------
 

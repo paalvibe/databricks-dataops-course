@@ -92,7 +92,16 @@ spark.sql(f"GRANT MODIFY ON ANY FILE TO `users`")
 
 # COMMAND ----------
 
+# Create full mesh catalog
 domain_catalog = "acme_transport_taxinyc"
+spark.sql(f"CREATE CATALOG IF NOT EXISTS {domain_catalog}")
+spark.sql(f"GRANT USE CATALOG ON CATALOG {domain_catalog} TO `{groupname}`")
+spark.sql(f"GRANT CREATE SCHEMA ON CATALOG {domain_catalog} TO `{groupname}`")
+
+# COMMAND ----------
+
+# Create reduced mesh (without org and proejct) catalog
+domain_catalog = "transport"
 spark.sql(f"CREATE CATALOG IF NOT EXISTS {domain_catalog}")
 spark.sql(f"GRANT USE CATALOG ON CATALOG {domain_catalog} TO `{groupname}`")
 spark.sql(f"GRANT CREATE SCHEMA ON CATALOG {domain_catalog} TO `{groupname}`")

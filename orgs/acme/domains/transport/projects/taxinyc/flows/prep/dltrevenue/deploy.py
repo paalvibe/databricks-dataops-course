@@ -5,7 +5,7 @@
 
 # COMMAND ----------
 
-!pip install pyyaml
+!pip install brickops==0.3.12
 
 # COMMAND ----------
 
@@ -22,14 +22,14 @@
 # COMMAND ----------
 
 import requests
-from libs.dataops.deploy.autopipeline import autopipeline
-from libs.dataops.pipeline import run_pipeline_by_name, run_pipeline
+from brickops.dataops.deploy.autopipeline import autopipeline
+from brickops.dataops.pipeline import run_pipeline_by_name, run_pipeline
 
 # COMMAND ----------
 
 # Name functions enables automatic env+user specific database naming
-from libs.catname import catname_from_path
-from libs.dbname import dbname
+from brickops.datamesh.naming import catname_from_path
+from brickops.datamesh.naming import dbname
 
 # COMMAND ----------
 

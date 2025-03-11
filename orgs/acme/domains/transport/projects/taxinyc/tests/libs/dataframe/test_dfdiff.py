@@ -1,5 +1,5 @@
 import pytest  # noqa F401
-from libs.dataframe import dfdiff
+from brickops.dataframe import dfdiff
 from pyspark.sql import functions as F
 from pyspark.sql.types import LongType
 from .datasets import fixtures, expected  # noqa F

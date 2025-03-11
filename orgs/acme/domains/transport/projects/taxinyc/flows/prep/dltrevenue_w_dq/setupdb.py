@@ -5,7 +5,7 @@
 
 # COMMAND ----------
 
-!pip install pyyaml
+!pip install brickops==0.3.12
 
 # COMMAND ----------
 
@@ -22,14 +22,14 @@
 # COMMAND ----------
 
 import requests
-from libs.dataops.deploy.autojob import autojob
-from libs.dataops.job import run_job_by_name
+from brickops.dataops.deploy.autojob import autojob
+from brickops.dataops.job import run_job_by_name
 
 # COMMAND ----------
 
 # Name functions enables automatic env+user specific database naming
-from libs.catname import catname_from_path
-from libs.dbname import dbname
+from brickops.datamesh.naming import catname_from_path
+from brickops.datamesh.naming import dbname
 
 # COMMAND ----------
 
