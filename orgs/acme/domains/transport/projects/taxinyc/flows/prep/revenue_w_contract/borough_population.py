@@ -8,8 +8,13 @@
 
 # COMMAND ----------
 
-# MAGIC %load_ext autoreload
-# MAGIC %autoreload 2
+# Install brickops lib for naming and datamesh functions
+%pip install brickops==0.3.9
+
+# COMMAND ----------
+
+# %load_ext autoreload
+# %autoreload 2
 
 # COMMAND ----------
 
@@ -19,9 +24,9 @@ import shutil
 from pyspark.sql import functions as F
 
 # Name functions enables automatic env+user specific database naming
-from libs.dbname import dbname
-from libs.tblname import tblname
-from libs.catname import catname_from_path
+from brickops.datamesh.naming import dbname
+from brickops.datamesh.naming import build_table_name as tablename
+from brickops.datamesh.naming import catname_from_path
 
 # COMMAND ----------
 
@@ -111,7 +116,7 @@ print(f"catalog: {catalog}")
 
 # COMMAND ----------
 
-borough_population_tbl = tblname(cat=catalog, db="revenue", tbl="borough_population")
+borough_population_tbl = tablename(cat=catalog, db="revenue", tbl="borough_population")
 print("borough_population_tbl:" + repr(borough_population_tbl))
 (
     simple_pop_df.write.mode("overwrite")

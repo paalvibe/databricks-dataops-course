@@ -25,7 +25,16 @@
 
 # COMMAND ----------
 
-from libs.dbname import dbname
+# MAGIC %pip install brickops==0.3.12
+
+# COMMAND ----------
+
+# Restart python to access updated packages
+dbutils.library.restartPython()
+
+# COMMAND ----------
+
+from brickops.datamesh.naming import dbname
 
 # COMMAND ----------
 

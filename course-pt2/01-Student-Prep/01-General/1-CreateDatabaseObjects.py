@@ -6,9 +6,9 @@
 
 # COMMAND ----------
 
-# MAGIC %md ### 0. Select a cluster
+# MAGIC %md ### 0. Select a cluster: Serverless
 # MAGIC
-# MAGIC Press the Connect dropdown in the upper left menu, and select Serverless etc
+# MAGIC Press the Connect dropdown in the upper left menu, and select Serverless
 
 # COMMAND ----------
 

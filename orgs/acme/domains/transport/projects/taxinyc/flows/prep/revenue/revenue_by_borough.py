@@ -5,12 +5,12 @@
 
 # COMMAND ----------
 
-# %load_ext autoreload
-# %autoreload 2
+# MAGIC %pip install brickops==0.3.12
 
 # COMMAND ----------
 
-from libs.dataops.job.params import job_param
+# %load_ext autoreload
+# %autoreload 2
 
 # COMMAND ----------
 
@@ -18,9 +18,9 @@ from libs.dataops.job.params import job_param
 from pyspark.sql import functions as F
 
 # Name functions enables automatic env+user specific database naming
-from libs.tblname import tblname
-from libs.catname import catname_from_path
-from libs.dbname import dbname
+from brickops.datamesh.naming import build_table_name as tablename
+from brickops.datamesh.naming import catname_from_path
+from brickops.datamesh.naming import dbname
 
 # COMMAND ----------
 
@@ -78,7 +78,7 @@ revenue_by_borough_df
 
 # COMMAND ----------
 
-revenue_by_borough_tbl = tblname(cat=catalog, db="revenue", tbl="revenue_by_borough")
+revenue_by_borough_tbl = tablename(cat=catalog, db="revenue", tbl="revenue_by_borough")
 print("revenue_by_borough_tbl:" + repr(revenue_by_borough_tbl))
 (
     revenue_by_borough_df.write.mode("overwrite")

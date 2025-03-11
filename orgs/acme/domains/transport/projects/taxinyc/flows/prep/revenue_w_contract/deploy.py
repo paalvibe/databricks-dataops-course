@@ -5,7 +5,7 @@
 
 # COMMAND ----------
 
-!pip install pyyaml
+!pip install brickops==0.3.12
 
 # COMMAND ----------
 
@@ -22,8 +22,8 @@
 # COMMAND ----------
 
 import requests
-from libs.dataops.deploy.autojob import autojob
-from libs.dataops.job import run_job_by_name
+from brickops.dataops.deploy.autojob import autojob
+from brickops.dataops.job import run_job_by_name
 
 # COMMAND ----------
 

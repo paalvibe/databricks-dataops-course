@@ -5,8 +5,13 @@
 
 # COMMAND ----------
 
-# MAGIC %load_ext autoreload
-# MAGIC %autoreload 2
+# Install brickops lib for naming and datamesh functions
+%pip install brickops==0.3.9
+
+# COMMAND ----------
+
+# %load_ext autoreload
+# %autoreload 2
 
 # COMMAND ----------
 
@@ -14,9 +19,9 @@
 from pyspark.sql import functions as F
 
 # Name functions enables automatic env+user specific database naming
-from libs.dbname import dbname
-from libs.tblname import tblname
-from libs.catname import catname_from_path
+from brickops.datamesh.naming import dbname
+from brickops.datamesh.naming import build_table_name as tablename
+from brickops.datamesh.naming import catname_from_path
 
 # COMMAND ----------
 
@@ -69,7 +74,7 @@ revenue_by_trip_month_df
 
 # COMMAND ----------
 
-revenue_by_trip_month_tbl = tblname(cat=catalog, db="revenue", tbl="revenue_by_tripmonth")
+revenue_by_trip_month_tbl = tablename(cat=catalog, db="revenue", tbl="revenue_by_tripmonth")
 print("revenue_by_trip_month_tbl:" + repr(revenue_by_trip_month_tbl))
 (
     revenue_by_trip_month_df.write.mode("overwrite")
