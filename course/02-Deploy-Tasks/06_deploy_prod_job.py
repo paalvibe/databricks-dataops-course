@@ -29,7 +29,8 @@
 # MAGIC
 # MAGIC ## Task: Study the name of the prod job and prod output data
 # MAGIC
-# MAGIC Ideally, the data should be written to a schema without prefix, since it is production. But we are working on the implementation. Trying to solve how to pickup up env vars signalling pipeline env prod vs dev.
+# MAGIC The brickops package will detect whether the deployment is headed to prod or not, and will remove any prefixes / suffixes, but the code needs to be deployed with a service principal for this to work.
+# MAGIC Any proposals for customizations are most welcome :)
 # MAGIC
 
 # COMMAND ----------

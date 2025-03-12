@@ -37,7 +37,7 @@
 # MAGIC
 # MAGIC Go to the notebook orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue/deploy, and run the autojob cell again.
 # MAGIC
-# MAGIC Note that the output will say `Resetting job` instead of `Creating job`.
+# MAGIC Note that you will not get a new job_id in the output, as the job is updated.
 # MAGIC
 # MAGIC Look in the Workflows page. The job should be there still, but it has been updated.
 # MAGIC
