@@ -5,7 +5,7 @@
 
 # COMMAND ----------
 
-!pip install brickops==0.3.12
+!pip install git+https://github.com/brickops/brickops@feature/pipeline-support
 
 # COMMAND ----------
 
