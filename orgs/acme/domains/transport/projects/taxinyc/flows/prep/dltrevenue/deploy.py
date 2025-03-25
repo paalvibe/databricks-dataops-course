@@ -5,19 +5,24 @@
 
 # COMMAND ----------
 
-!pip install git+https://github.com/brickops/brickops@feature/pipeline-support
+# # Enable live reloading of libs, not needed now
+%load_ext autoreload
+%autoreload 2
+
+# COMMAND ----------
+
+!pip install --no-cache-dir git+https://github.com/brickops/brickops@feature/pipeline-support
+
+# COMMAND ----------
+
+# Restart python to have access to pip modules
+dbutils.library.restartPython()
 
 # COMMAND ----------
 
 # MAGIC %md
 # MAGIC
 # MAGIC ### Import libs
-
-# COMMAND ----------
-
-# # Enable live reloading of libs, not needed now
-# %load_ext autoreload
-# %autoreload 2
 
 # COMMAND ----------
 
@@ -54,7 +59,7 @@ spark.sql(f"CREATE DATABASE IF NOT EXISTS {db}")
 
 # Deploy pipelines based on deployment.yml, in dev mode, specified by env param
 
-response = autopipeline(env="dev")
+response = autopipeline()
 response
 
 # COMMAND ----------
@@ -65,18 +70,14 @@ response
 
 # COMMAND ----------
 
-# For now we will not run pipeline by id, but name instead
-# as it survives a cluster reconnect, since name is idempotent
-run_pipeline(
-    dbutils=dbutils, 
-    pipeline_id=response["response"]["pipeline_id"]
-)
+# Show response
+response
 
 # COMMAND ----------
 
-# Can be used when the pipeline created has the same name as one previously recreated
-# run_pipeline_by_name(dbutils=dbutils, 
-#    pipeline_name=response["pipeline_name"])
+# For now we will not run pipeline by id, but name instead
+# as it survives a cluster reconnect, since name is idempotent
+run_pipeline_by_name(response["pipeline_name"])
 
 # COMMAND ----------
 
