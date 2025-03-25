@@ -24,7 +24,16 @@
 
 # COMMAND ----------
 
-from libs.dbname import dbname
+# MAGIC %pip install git+https://github.com/brickops/brickops@feature/pipeline-support
+
+# COMMAND ----------
+
+# Restart python to have access to pip modules
+dbutils.library.restartPython()
+
+# COMMAND ----------
+
+from brickops.datamesh.naming import dbname
 
 # COMMAND ----------
 
