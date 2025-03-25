@@ -77,7 +77,7 @@ response
 
 # For now we will not run pipeline by id, but name instead
 # as it survives a cluster reconnect, since name is idempotent
-run_pipeline_by_name(response["pipeline_name"])
+# run_pipeline_by_name(response["pipeline_name"])
 
 # COMMAND ----------
 
@@ -88,8 +88,6 @@ run_pipeline_by_name(response["pipeline_name"])
 
 # COMMAND ----------
 
-# import os
-# os.environ["DEPLOYMENT_ENV"] = "prod"
 # # Deploy pipelines based on deployment.yml, in dev mode
 # prod_response = autopipeline(env="prod")
 
@@ -101,10 +99,7 @@ run_pipeline_by_name(response["pipeline_name"])
 
 # COMMAND ----------
 
-# run_pipeline(
-#     dbutils=dbutils, 
-#     pipeline_id=prod_response["response"]["pipeline_id"]
-# )
+# run_pipeline_by_name(pipeline_name=prod_response["pipeline_name"])
 
 # COMMAND ----------
 
