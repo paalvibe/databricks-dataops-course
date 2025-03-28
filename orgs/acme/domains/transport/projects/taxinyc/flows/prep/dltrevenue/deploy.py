@@ -5,19 +5,24 @@
 
 # COMMAND ----------
 
-!pip install brickops==0.3.12
+# # Enable live reloading of libs, not needed now
+%load_ext autoreload
+%autoreload 2
+
+# COMMAND ----------
+
+!pip install brickops==0.3.14
+
+# COMMAND ----------
+
+# Restart python to have access to pip modules
+dbutils.library.restartPython()
 
 # COMMAND ----------
 
 # MAGIC %md
 # MAGIC
 # MAGIC ### Import libs
-
-# COMMAND ----------
-
-# # Enable live reloading of libs, not needed now
-# %load_ext autoreload
-# %autoreload 2
 
 # COMMAND ----------
 
@@ -52,9 +57,17 @@ spark.sql(f"CREATE DATABASE IF NOT EXISTS {db}")
 
 # COMMAND ----------
 
-# Deploy pipelines based on deployment.yml, in dev mode, specified by env param
+import logging
 
-response = autopipeline(env="dev")
+# Configure the logger
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+
+# COMMAND ----------
+
+# Deploy pipelines based on deployment.yml, in dev mode, specified by env param
+response = autopipeline()
 response
 
 # COMMAND ----------
@@ -65,18 +78,14 @@ response
 
 # COMMAND ----------
 
-# For now we will not run pipeline by id, but name instead
-# as it survives a cluster reconnect, since name is idempotent
-run_pipeline(
-    dbutils=dbutils, 
-    pipeline_id=response["response"]["pipeline_id"]
-)
+# Show response
+response
 
 # COMMAND ----------
 
-# Can be used when the pipeline created has the same name as one previously recreated
-# run_pipeline_by_name(dbutils=dbutils, 
-#    pipeline_name=response["pipeline_name"])
+# For now we will not run pipeline by id, but name instead
+# as it survives a cluster reconnect, since name is idempotent
+run_pipeline_by_name(response["pipeline_name"])
 
 # COMMAND ----------
 
@@ -84,11 +93,12 @@ run_pipeline(
 # MAGIC
 # MAGIC ## Tasks for later
 # MAGIC ### Task: Deploy to prod
+# MAGIC
+# MAGIC This task will fail if the pipeline already exists as there can only be one production job.
+# MAGIC The error code might be `CHANGES_UC_PIPELINE_TO_HMS_NOT_ALLOWED`.
 
 # COMMAND ----------
 
-# import os
-# os.environ["DEPLOYMENT_ENV"] = "prod"
 # # Deploy pipelines based on deployment.yml, in dev mode
 # prod_response = autopipeline(env="prod")
 
@@ -100,10 +110,7 @@ run_pipeline(
 
 # COMMAND ----------
 
-# run_pipeline(
-#     dbutils=dbutils, 
-#     pipeline_id=prod_response["response"]["pipeline_id"]
-# )
+# run_pipeline_by_name(pipeline_name=prod_response["pipeline_name"])
 
 # COMMAND ----------
 

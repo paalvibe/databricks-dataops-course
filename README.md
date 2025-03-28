@@ -50,11 +50,11 @@ A longer explanation of the ideas behind the repo structure can be found in the 
 
 ## Dataops libs
 
-There are python libs in the [libs](https://github.com/paalvibe/databricks-dataops-course/tree/main/libs) folder, to enable a versioned pipeline deployment and way of working. The main logic is in [libs/dataops/deploy](https://github.com/paalvibe/databricks-dataops-course/tree/main/libs/dataops/deploy), and there are tests under [libs/tests](https://github.com/paalvibe/databricks-dataops-course/tree/main/libs/tests).
+For the dataops code, we use the [brickops](https://github.com/brickops/brickops) package from Pypi, to enable a versioned pipeline deployment and way of working. The main logic is under [dataops/deploy](https://github.com/brickops/brickops/blob/main/brickops/dataops/deploy/autojob.py).
 
 ## Reusing the structure and dataops libs
 
-The structure and dataops libs can be used in your own projects, by forking the repo or copying the content and adapting it.
+The structure and brickops libs can be used in your own projects, by forking the repo or copying the content and adapting it.
 
 ## Course
 
