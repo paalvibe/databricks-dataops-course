@@ -58,7 +58,6 @@ spark.sql(f"CREATE DATABASE IF NOT EXISTS {db}")
 # COMMAND ----------
 
 # Deploy pipelines based on deployment.yml, in dev mode, specified by env param
-
 response = autopipeline()
 response
 
