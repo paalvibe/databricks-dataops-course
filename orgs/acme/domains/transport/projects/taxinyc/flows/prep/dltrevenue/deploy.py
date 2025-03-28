@@ -11,7 +11,7 @@
 
 # COMMAND ----------
 
-!pip install --no-cache-dir git+https://github.com/brickops/brickops@feature/pipeline-support
+!pip install brickops==0.3.14
 
 # COMMAND ----------
 
@@ -85,7 +85,7 @@ response
 
 # For now we will not run pipeline by id, but name instead
 # as it survives a cluster reconnect, since name is idempotent
-# run_pipeline_by_name(response["pipeline_name"])
+run_pipeline_by_name(response["pipeline_name"])
 
 # COMMAND ----------
 
@@ -93,11 +93,14 @@ response
 # MAGIC
 # MAGIC ## Tasks for later
 # MAGIC ### Task: Deploy to prod
+# MAGIC
+# MAGIC This task will fail if the pipeline already exists as there can only be one production job.
+# MAGIC The error code might be `CHANGES_UC_PIPELINE_TO_HMS_NOT_ALLOWED`.
 
 # COMMAND ----------
 
 # # Deploy pipelines based on deployment.yml, in dev mode
-prod_response = autopipeline(env="prod")
+# prod_response = autopipeline(env="prod")
 
 # COMMAND ----------
 
