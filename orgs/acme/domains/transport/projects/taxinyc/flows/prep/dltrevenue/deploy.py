@@ -57,6 +57,15 @@ spark.sql(f"CREATE DATABASE IF NOT EXISTS {db}")
 
 # COMMAND ----------
 
+import logging
+
+# Configure the logger
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+
+# COMMAND ----------
+
 # Deploy pipelines based on deployment.yml, in dev mode, specified by env param
 response = autopipeline()
 response
