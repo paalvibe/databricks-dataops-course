@@ -6,7 +6,7 @@
 # COMMAND ----------
 
 # Install brickops lib for naming and datamesh functions
-%pip install brickops==0.3.9
+%pip install brickops==0.3.14
 
 # COMMAND ----------
 
