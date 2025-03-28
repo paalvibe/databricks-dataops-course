@@ -89,7 +89,7 @@ response
 # COMMAND ----------
 
 # # Deploy pipelines based on deployment.yml, in dev mode
-# prod_response = autopipeline(env="prod")
+prod_response = autopipeline(env="prod")
 
 # COMMAND ----------
 
