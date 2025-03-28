@@ -1,11 +1,11 @@
 # Databricks notebook source
 # MAGIC %md
-# MAGIC ## Create the revenue data product
+# MAGIC ## Create the revenue data product and do data quality check with DQX
 # MAGIC #
 
 # COMMAND ----------
 
-# MAGIC %pip install brickops==0.3.12
+# MAGIC %pip install brickops==0.3.14
 
 # COMMAND ----------
 
