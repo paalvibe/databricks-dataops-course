@@ -24,7 +24,7 @@
 
 # COMMAND ----------
 
-# MAGIC %pip install git+https://github.com/brickops/brickops@feature/pipeline-support
+# MAGIC %pip install brickops==0.3.14
 
 # COMMAND ----------
 
