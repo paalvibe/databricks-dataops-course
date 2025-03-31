@@ -78,11 +78,6 @@ response
 
 # COMMAND ----------
 
-# Show response
-response
-
-# COMMAND ----------
-
 # For now we will not run pipeline by id, but name instead
 # as it survives a cluster reconnect, since name is idempotent
 run_pipeline_by_name(response["pipeline_name"])
