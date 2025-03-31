@@ -25,7 +25,7 @@
 
 # COMMAND ----------
 
-# MAGIC %pip install brickops==0.3.14
+# MAGIC %pip install brickops==0.3.15
 
 # COMMAND ----------
 
