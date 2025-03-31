@@ -5,7 +5,7 @@
 
 # COMMAND ----------
 
-!pip install brickops=0.3.14
+!pip install brickops=0.3.15
 
 # COMMAND ----------
 

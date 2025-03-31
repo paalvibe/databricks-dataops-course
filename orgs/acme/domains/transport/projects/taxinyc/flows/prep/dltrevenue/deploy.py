@@ -11,7 +11,7 @@
 
 # COMMAND ----------
 
-!pip install brickops==0.3.14
+!pip install brickops==0.3.15
 
 # COMMAND ----------
 
@@ -75,11 +75,6 @@ response
 # MAGIC %md
 # MAGIC
 # MAGIC ### Run pipeline with python code
-
-# COMMAND ----------
-
-# Show response
-response
 
 # COMMAND ----------
 
