@@ -36,4 +36,4 @@
 # MAGIC
 # MAGIC ## Task: Explore data
 # MAGIC
-# MAGIC Open a new tab, and go to `orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue/explore/taxinyc_revenue`.
+# MAGIC Open a new tab, and go to `orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue/explore/taxinyc_revenue` in the repo structure. To open a new tab you can press the three dots next to `00_pre_study`, press "Open in new tab" and then navigate from the root of this repo into `orgs/acme etc`.
