@@ -20,9 +20,9 @@ dbutils.library.restartPython()
 
 # COMMAND ----------
 
-# # Enable live reloading of libs, not needed now
-%load_ext autoreload
-%autoreload 2
+# # # Enable live reloading of libs, not needed now
+# %load_ext autoreload
+# %autoreload 2
 
 # COMMAND ----------
 
@@ -70,11 +70,9 @@ response
 
 # COMMAND ----------
 
-run_pipeline
-
-# COMMAND ----------
-
 # Run the pipeline by pipeline ID
+# If you get KeyError: 'pipeline_id', it could because you have recreated a pipeline, in which case
+# you need to use run_pipeline_by_name()
 run_pipeline(
     pipeline_id=response["response"]["pipeline_id"]
 )
