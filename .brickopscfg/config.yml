@@ -1,7 +1,7 @@
 naming:
   job:
-    prod: "{domain}_{project}_{env}"
-    other: "{domain}_{project}_{env}_{username}_{gitbranch}_{gitshortref}"
+    prod: "{domain}_{project}_{env}_{flow}"
+    other: "{domain}_{project}_{env}_{flow}_{username}_{gitbranch}_{gitshortref}"
   pipeline:
     prod: "{domain}_{project}_{env}_dlt"
     other: "{domain}_{project}_{env}_{username}_{gitbranch}_{gitshortref}_dlt"
