@@ -25,9 +25,9 @@
 
 # COMMAND ----------
 
-# %pip install git+https://github.com/brickops/brickops.git@86d183ee6f0f23f317922a6344fb28d42e8bd46a
+# %pip install git+https://github.com/brickops/brickops.git@6bf182678df9aa12ce0d24a858bc9eb1ec68c524
 # %pip install git+https://github.com/brickops/brickops.git@feature/file-cfg
-%pip install git+https://github.com/brickops/brickops.git@86d183ee6f0f23f317922a6344fb28d42e8bd46a
+%pip install git+https://github.com/brickops/brickops.git@6bf182678df9aa12ce0d24a858bc9eb1ec68c524
 
 # COMMAND ----------
 
