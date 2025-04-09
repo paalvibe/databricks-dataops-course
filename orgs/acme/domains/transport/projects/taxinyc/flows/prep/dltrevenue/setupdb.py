@@ -5,7 +5,7 @@
 
 # COMMAND ----------
 
-!pip install git+https://github.com/brickops/brickops.git@6bf182678df9aa12ce0d24a858bc9eb1ec68c524
+!pip install brickops=0.3.16
 
 # COMMAND ----------
 
