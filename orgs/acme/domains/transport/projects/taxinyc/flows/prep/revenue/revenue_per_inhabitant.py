@@ -5,16 +5,13 @@
 
 # COMMAND ----------
 
-<<<<<<< HEAD
-# MAGIC %pip install brickops==0.3.15
-=======
 # MAGIC %pip install brickops=0.3.16
->>>>>>> a514f15 (dataops-pt2 working)
 
 # COMMAND ----------
 
-# MAGIC %load_ext autoreload
-# MAGIC %autoreload 2
+# Used only when developing the fundamental libraries
+# %load_ext autoreload
+# %autoreload 2
 
 # COMMAND ----------
 

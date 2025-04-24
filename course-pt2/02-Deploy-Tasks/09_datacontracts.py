@@ -27,7 +27,7 @@
 
 # MAGIC %md
 # MAGIC
-# MAGIC Go to the notebook orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue_w_contract/verify_contract, and run through it gradually, with `Serverless` cluster.
+# MAGIC Go to the notebook `orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue_w_contract/verify_contract`, and run through it gradually, with `Serverless` cluster.
 # MAGIC
 # MAGIC If you get python version problems, you can try connecting to the `contract_checker` cluster instead, using the `verify_contract_on_cluster` notebook instead of `verify_contract`.
 # MAGIC Note that an SQL warehouse must be available at `/sql/1.0/warehouses/aee0a674651b7e21`. See SQL Warehouses on the left side menu.

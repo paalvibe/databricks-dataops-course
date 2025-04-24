@@ -17,5 +17,3 @@
 schema: dltrevenue
 pipeline_tasks:
 - pipeline_key: revenue
-  # policy_name: dlt_default_policy
-schema: dltrevenue
