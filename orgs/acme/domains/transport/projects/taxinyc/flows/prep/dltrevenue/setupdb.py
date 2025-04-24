@@ -15,9 +15,9 @@
 
 # COMMAND ----------
 
-# Enable live reloading of libs, not needed now
-%load_ext autoreload
-%autoreload 2
+# Enable live reloading of libs, not needed now. Only used when working on fundamental libs.
+# %load_ext autoreload
+# %autoreload 2
 
 # COMMAND ----------
 

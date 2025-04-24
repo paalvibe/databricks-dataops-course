@@ -9,6 +9,7 @@
 
 # COMMAND ----------
 
+# Used only when developing the fundamental libraries
 # %load_ext autoreload
 # %autoreload 2
 
