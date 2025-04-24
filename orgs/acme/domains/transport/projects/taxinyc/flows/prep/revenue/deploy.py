@@ -5,7 +5,13 @@
 
 # COMMAND ----------
 
-!pip install brickops==0.3.12
+# !pip install brickops=0.3.16
+%pip install brickops=0.3.16
+
+# COMMAND ----------
+
+# Restart python to access updated packages
+dbutils.library.restartPython()
 
 # COMMAND ----------
 
@@ -33,6 +39,8 @@ from brickops.dataops.job import run_job_by_name
 
 # COMMAND ----------
 
+import logging
+logging.getLogger("brickops").setLevel(logging.INFO)
 # Deploy jobs based on deployment.yml, in dev mode, specified by env param
 response = autojob(env="test")
 

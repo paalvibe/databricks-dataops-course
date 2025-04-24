@@ -14,7 +14,6 @@
 #   quartz_cron_expression: 27 0 16 ? * Thu
 #   timezone_id: Europe/Brussels
 #   pause_status: UNPAUSED
+schema: dltrevenue
 pipeline_tasks:
 - pipeline_key: revenue
-  # policy_name: dlt_default_policy
-  db: dltrevenue
