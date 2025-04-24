@@ -25,7 +25,9 @@
 
 # COMMAND ----------
 
-# MAGIC %pip install brickops==0.3.15
+# %pip install brickops=0.3.16
+# %pip install git+https://github.com/brickops/brickops.git@feature/file-cfg
+%pip install brickops=0.3.16
 
 # COMMAND ----------
 
@@ -35,6 +37,12 @@ dbutils.library.restartPython()
 # COMMAND ----------
 
 from brickops.datamesh.naming import dbname
+
+# COMMAND ----------
+
+# If you want more info, you can enable logging
+# import logging
+# logging.getLogger("brickops").setLevel(logging.INFO)
 
 # COMMAND ----------
 

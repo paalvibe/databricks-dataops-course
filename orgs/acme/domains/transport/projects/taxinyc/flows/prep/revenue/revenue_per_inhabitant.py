@@ -5,7 +5,11 @@
 
 # COMMAND ----------
 
+<<<<<<< HEAD
 # MAGIC %pip install brickops==0.3.15
+=======
+# MAGIC %pip install brickops=0.3.16
+>>>>>>> a514f15 (dataops-pt2 working)
 
 # COMMAND ----------
 
