@@ -97,11 +97,7 @@ run_pipeline(
 
 # Can be used when the pipeline created has the same name as one previously recreated,
 # but note that names are no longer idempotent in Databricks
-<<<<<<< HEAD
-# run_pipeline_by_name(dbutils=dbutils,
-=======
-# run_pipeline_by_name(dbutils=dbutils, 
->>>>>>> 555349d (bump brickops, accomodate new dlt changes)
+# run_pipeline_by_name(
 #    pipeline_name=response["pipeline_name"])
 
 # COMMAND ----------
@@ -116,11 +112,7 @@ run_pipeline(
 
 # COMMAND ----------
 
-<<<<<<< HEAD
-# # Deploy pipelines based on deployment.yml, in dev mode
-=======
 # Deploy pipelines based on deployment.yml, in dev mode
->>>>>>> 555349d (bump brickops, accomodate new dlt changes)
 # prod_response = autopipeline(env="prod")
 
 # COMMAND ----------
