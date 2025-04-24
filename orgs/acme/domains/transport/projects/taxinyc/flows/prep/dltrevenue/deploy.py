@@ -5,10 +5,9 @@
 
 # COMMAND ----------
 
-<<<<<<< HEAD
 # # Enable live reloading of libs, not needed now
-%load_ext autoreload
-%autoreload 2
+# %load_ext autoreload
+# %autoreload 2
 
 # COMMAND ----------
 
@@ -18,9 +17,6 @@
 
 # Restart python to have access to pip modules
 dbutils.library.restartPython()
-=======
-!pip install brickops=0.3.16
->>>>>>> 555349d (bump brickops, accomodate new dlt changes)
 
 # COMMAND ----------
 
@@ -30,8 +26,6 @@ dbutils.library.restartPython()
 
 # COMMAND ----------
 
-<<<<<<< HEAD
-=======
 # Restart python to access updated packages
 dbutils.library.restartPython()
 
@@ -43,7 +37,6 @@ dbutils.library.restartPython()
 
 # COMMAND ----------
 
->>>>>>> 555349d (bump brickops, accomodate new dlt changes)
 import requests
 from brickops.dataops.deploy.autopipeline import autopipeline
 from brickops.dataops.pipeline import run_pipeline_by_name, run_pipeline
@@ -75,12 +68,9 @@ spark.sql(f"CREATE DATABASE IF NOT EXISTS {db}")
 
 # COMMAND ----------
 
+# Show more output from brickops
 import logging
-
-# Configure the logger
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
+logging.getLogger("brickops").setLevel(logging.INFO)
 
 # COMMAND ----------
 
@@ -145,5 +135,3 @@ run_pipeline(
 #     pipeline_id=prod_response["response"]["pipeline_id"]
 # )
 
-
-# COMMAND ----------
