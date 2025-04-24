@@ -34,6 +34,14 @@
 # COMMAND ----------
 
 # MAGIC %md
+# MAGIC ## Study our naming configuration
+# MAGIC
+# MAGIC The resource (catalog, table, job etc) naming is created by the [brickops](https://github.com/brickops/brickops) library.
+# MAGIC Look at our brickops config in `/.brickopscfg/config.yml` now to see how we have defined our naming.
+
+# COMMAND ----------
+
+# MAGIC %md
 # MAGIC
 # MAGIC ## Topic: Notebook shortcuts
 # MAGIC
@@ -41,4 +49,9 @@
 
 # COMMAND ----------
 
-
+# MAGIC %md
+# MAGIC
+# MAGIC ## Pro-tip: Navigate between files with the Recents menu option
+# MAGIC
+# MAGIC On the left side menu you can use the `Recents` link to easily jump between recent notebooks.
+# MAGIC You might also see tabs on the top of this page, which enables you to navigate.
