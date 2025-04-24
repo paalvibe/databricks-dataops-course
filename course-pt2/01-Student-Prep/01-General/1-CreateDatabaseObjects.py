@@ -19,12 +19,16 @@
 
 # COMMAND ----------
 
+# MAGIC %pip install brickops=0.3.16
+
+# COMMAND ----------
+
 # MAGIC %md
 # MAGIC ##### 1.1. Create schemas (AKA databases)
 
 # COMMAND ----------
 
-from libs.dbname import dbname
+from brickops.datamesh.naming import dbname
 
 # COMMAND ----------
 
