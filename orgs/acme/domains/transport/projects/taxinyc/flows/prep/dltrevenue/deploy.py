@@ -5,10 +5,9 @@
 
 # COMMAND ----------
 
-<<<<<<< HEAD
 # # Enable live reloading of libs, not needed now
-%load_ext autoreload
-%autoreload 2
+# %load_ext autoreload
+# %autoreload 2
 
 # COMMAND ----------
 
@@ -18,9 +17,6 @@
 
 # Restart python to have access to pip modules
 dbutils.library.restartPython()
-=======
-!pip install brickops=0.3.16
->>>>>>> 555349d (bump brickops, accomodate new dlt changes)
 
 # COMMAND ----------
 
@@ -30,8 +26,6 @@ dbutils.library.restartPython()
 
 # COMMAND ----------
 
-<<<<<<< HEAD
-=======
 # Restart python to access updated packages
 dbutils.library.restartPython()
 
@@ -43,7 +37,6 @@ dbutils.library.restartPython()
 
 # COMMAND ----------
 
->>>>>>> 555349d (bump brickops, accomodate new dlt changes)
 import requests
 from brickops.dataops.deploy.autopipeline import autopipeline
 from brickops.dataops.pipeline import run_pipeline_by_name, run_pipeline
@@ -75,12 +68,9 @@ spark.sql(f"CREATE DATABASE IF NOT EXISTS {db}")
 
 # COMMAND ----------
 
+# Show more output from brickops
 import logging
-
-# Configure the logger
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
+logging.getLogger("brickops").setLevel(logging.INFO)
 
 # COMMAND ----------
 
@@ -107,11 +97,7 @@ run_pipeline(
 
 # Can be used when the pipeline created has the same name as one previously recreated,
 # but note that names are no longer idempotent in Databricks
-<<<<<<< HEAD
-# run_pipeline_by_name(dbutils=dbutils,
-=======
-# run_pipeline_by_name(dbutils=dbutils, 
->>>>>>> 555349d (bump brickops, accomodate new dlt changes)
+# run_pipeline_by_name(
 #    pipeline_name=response["pipeline_name"])
 
 # COMMAND ----------
@@ -126,11 +112,7 @@ run_pipeline(
 
 # COMMAND ----------
 
-<<<<<<< HEAD
-# # Deploy pipelines based on deployment.yml, in dev mode
-=======
 # Deploy pipelines based on deployment.yml, in dev mode
->>>>>>> 555349d (bump brickops, accomodate new dlt changes)
 # prod_response = autopipeline(env="prod")
 
 # COMMAND ----------
@@ -145,5 +127,3 @@ run_pipeline(
 #     pipeline_id=prod_response["response"]["pipeline_id"]
 # )
 
-
-# COMMAND ----------
