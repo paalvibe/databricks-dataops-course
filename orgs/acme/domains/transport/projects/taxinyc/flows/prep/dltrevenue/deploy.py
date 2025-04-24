@@ -93,9 +93,7 @@ run_pipeline(
 
 # COMMAND ----------
 
-# import os
-# os.environ["DEPLOYMENT_ENV"] = "prod"
-# # Deploy pipelines based on deployment.yml, in dev mode
+# Deploy pipelines based on deployment.yml, in dev mode
 # prod_response = autopipeline(env="prod")
 
 # COMMAND ----------
@@ -107,7 +105,6 @@ run_pipeline(
 # COMMAND ----------
 
 # run_pipeline(
-#     dbutils=dbutils, 
 #     pipeline_id=prod_response["response"]["pipeline_id"]
 # )
 

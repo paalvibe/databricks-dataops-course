@@ -27,10 +27,15 @@
 
 # MAGIC %md
 # MAGIC
-# MAGIC ## Task: Study the name of the prod pipeline and prod output data
+# MAGIC Answer here...
+
+# COMMAND ----------
+
+# MAGIC %md
 # MAGIC
-# MAGIC Ideally, the data should be written to a schema without prefix, since it is production. But we are working on the implementation. Trying to solve how to pickup up env vars signalling pipeline env prod vs dev.
+# MAGIC ## Task: Study the name of the prod pipeline and the default schema
 # MAGIC
+# MAGIC Look at the settings of the pipeline called `transport_taxinyc_prod_dlt`.
 
 # COMMAND ----------
 
