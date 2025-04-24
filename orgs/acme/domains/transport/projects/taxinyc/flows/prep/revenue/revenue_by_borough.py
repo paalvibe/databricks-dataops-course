@@ -5,10 +5,11 @@
 
 # COMMAND ----------
 
-# MAGIC %pip install brickops==0.3.15
+# MAGIC %pip install brickops=0.3.16
 
 # COMMAND ----------
 
+# Used only when developing the fundamental libraries
 # %load_ext autoreload
 # %autoreload 2
 

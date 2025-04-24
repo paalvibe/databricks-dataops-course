@@ -36,4 +36,4 @@
 # MAGIC
 # MAGIC ## Task: Explore data
 # MAGIC
-# MAGIC Open a new tab, and go to `orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue/explore/taxinyc_revenue`. Connect to the UC Shared Cluster you have been assigned, and run through the cells.
+# MAGIC Open a new tab, and go to `orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue/explore/taxinyc_revenue`. Connect to the Serverless cluster, and run through the cells.

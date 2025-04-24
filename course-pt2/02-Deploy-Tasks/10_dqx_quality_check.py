@@ -21,7 +21,7 @@
 # MAGIC
 # MAGIC ## Run revenue_per_inhabitant with DQX quality checks
 # MAGIC
-# MAGIC Go to the notebook orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue/revenue_per_inhabitant_w_dqx.
+# MAGIC Go to the notebook `orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue/revenue_per_inhabitant_w_dqx`.
 # MAGIC
 # MAGIC Connect to Serverless compute and run all cells.
 # MAGIC

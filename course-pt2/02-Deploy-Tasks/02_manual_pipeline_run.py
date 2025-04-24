@@ -30,7 +30,7 @@
 # MAGIC
 # MAGIC `borough_population` is an intermediate internal dataset.
 # MAGIC
-# MAGIC The data product will be written as the UC schema `acme_transport_taxinyc.revenue`.
+# MAGIC In production, the data product will be written as the UC schema `acme_transport_taxinyc.revenue`.
 # MAGIC
 # MAGIC ## Task: Run the notebooks manually.
 # MAGIC

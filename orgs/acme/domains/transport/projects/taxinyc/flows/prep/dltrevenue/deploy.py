@@ -5,18 +5,22 @@
 
 # COMMAND ----------
 
+<<<<<<< HEAD
 # # Enable live reloading of libs, not needed now
 %load_ext autoreload
 %autoreload 2
 
 # COMMAND ----------
 
-!pip install brickops==0.3.15
+!pip install brickops==0.3.16
 
 # COMMAND ----------
 
 # Restart python to have access to pip modules
 dbutils.library.restartPython()
+=======
+!pip install brickops=0.3.16
+>>>>>>> 555349d (bump brickops, accomodate new dlt changes)
 
 # COMMAND ----------
 
@@ -26,6 +30,20 @@ dbutils.library.restartPython()
 
 # COMMAND ----------
 
+<<<<<<< HEAD
+=======
+# Restart python to access updated packages
+dbutils.library.restartPython()
+
+# COMMAND ----------
+
+# # # Enable live reloading of libs, not needed now
+# %load_ext autoreload
+# %autoreload 2
+
+# COMMAND ----------
+
+>>>>>>> 555349d (bump brickops, accomodate new dlt changes)
 import requests
 from brickops.dataops.deploy.autopipeline import autopipeline
 from brickops.dataops.pipeline import run_pipeline_by_name, run_pipeline
@@ -78,9 +96,23 @@ response
 
 # COMMAND ----------
 
-# For now we will not run pipeline by id, but name instead
-# as it survives a cluster reconnect, since name is idempotent
-run_pipeline_by_name(response["pipeline_name"])
+# Run the pipeline by pipeline ID
+# If you get KeyError: 'pipeline_id', it could because you have recreated a pipeline, in which case
+# you need to use run_pipeline_by_name()
+run_pipeline(
+    pipeline_id=response["response"]["pipeline_id"]
+)
+
+# COMMAND ----------
+
+# Can be used when the pipeline created has the same name as one previously recreated,
+# but note that names are no longer idempotent in Databricks
+<<<<<<< HEAD
+# run_pipeline_by_name(dbutils=dbutils,
+=======
+# run_pipeline_by_name(dbutils=dbutils, 
+>>>>>>> 555349d (bump brickops, accomodate new dlt changes)
+#    pipeline_name=response["pipeline_name"])
 
 # COMMAND ----------
 
@@ -94,7 +126,11 @@ run_pipeline_by_name(response["pipeline_name"])
 
 # COMMAND ----------
 
+<<<<<<< HEAD
 # # Deploy pipelines based on deployment.yml, in dev mode
+=======
+# Deploy pipelines based on deployment.yml, in dev mode
+>>>>>>> 555349d (bump brickops, accomodate new dlt changes)
 # prod_response = autopipeline(env="prod")
 
 # COMMAND ----------
@@ -105,8 +141,9 @@ run_pipeline_by_name(response["pipeline_name"])
 
 # COMMAND ----------
 
-# run_pipeline_by_name(pipeline_name=prod_response["pipeline_name"])
+# run_pipeline(
+#     pipeline_id=prod_response["response"]["pipeline_id"]
+# )
+
 
 # COMMAND ----------
-
-

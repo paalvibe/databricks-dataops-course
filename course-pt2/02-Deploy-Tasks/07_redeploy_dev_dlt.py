@@ -37,7 +37,7 @@
 # MAGIC
 # MAGIC Go to the notebook orgs/acme/domains/transport/projects/taxinyc/flows/prep/dltrevenue/deploy, and run the autopipeline() cell again.
 # MAGIC
-# MAGIC Note that the output will say `Resetting job` instead of `Creating job`.
+# MAGIC Note that it will return only the name, but not the pipeline id, since the pipeline has been updated instead of created.
 # MAGIC
 # MAGIC Look in the Workflows page. The job should be there still, but it has been updated.
 # MAGIC
@@ -49,8 +49,8 @@
 # MAGIC
 # MAGIC ## Task: Redeploy with new commit
 # MAGIC
-# MAGIC Do a commit and run the autodeploy() fn again.
-# MAGIC Check the result under Workflows. Why is there a new job created?
+# MAGIC Do a commit and run the autopipeline() fn again.
+# MAGIC Check the result under Pipelines. Why is there a new pipeline created?
 
 # COMMAND ----------
 
