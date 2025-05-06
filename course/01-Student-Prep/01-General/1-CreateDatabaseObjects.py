@@ -46,7 +46,7 @@ from brickops.datamesh.naming import dbname
 
 # COMMAND ----------
 
-catalog = "transport"
+catalog = "acme_transport_taxinyc"
 revenue_db = dbname(cat=catalog, db="revenue")
 print("New db name: " + revenue_db)
 spark.sql(f"USE catalog {catalog}")
@@ -60,7 +60,7 @@ spark.sql(f"CREATE DATABASE IF NOT EXISTS {revenue_db}")
 # COMMAND ----------
 
 # MAGIC %sql
-# MAGIC USE CATALOG transport;
+# MAGIC USE CATALOG acme_transport_taxinyc;
 # MAGIC SHOW DATABASES;
 
 # COMMAND ----------

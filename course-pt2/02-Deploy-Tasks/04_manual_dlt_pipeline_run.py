@@ -1,7 +1,9 @@
 # Databricks notebook source
 # MAGIC %md
 # MAGIC
-# MAGIC # Run DLT pipeline
+# MAGIC # OPTIONAL: Run DLT pipeline
+# MAGIC
+# MAGIC **Skip this task if you are doing the 2.5 hour workshop. If you are doing the 4 hour workshop you can do it.**
 # MAGIC
 # MAGIC The DLT notebooks for producing the output data has already been developed.
 # MAGIC Your next task is to run the notebooks yourself.
@@ -42,14 +44,14 @@
 # MAGIC
 # MAGIC ### Setup the database schema where we will write data
 # MAGIC
-# MAGIC 1. Go to `orgs/acme/domains/transport/projects/taxinyc/flows/prep/dltrevenue/setupdb`
+# MAGIC 1. Go to the repo folder `orgs/acme/domains/transport/projects/taxinyc/flows/prep/dltrevenue/setupdb`
 # MAGIC 2. Run the notebook
 # MAGIC 3. Copy the database name, which will be something like `test_paldevibe_dataopsv2_e88409f3_dltrevenue`
 # MAGIC
 # MAGIC ### Run the DLT pipeline
 # MAGIC
-# MAGIC 1. Go to `orgs/acme/domains/transport/projects/taxinyc/flows/prep/dltrevenue/revenue`
-# MAGIC 2. Study the code, and compare to the corresponding pyspark pipelines in `orgs/acme/domains/transport/projects/taxinyc/flows/prep/dltrevenue/`.
+# MAGIC 1. Go to the repo folder `orgs/acme/domains/transport/projects/taxinyc/flows/prep/dltrevenue/revenue`
+# MAGIC 2. Study the code, and compare to the corresponding pyspark pipelines in `orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue/`.
 # MAGIC 3. Go to the Pipelines menu under Data Engineering on the left side menu
 # MAGIC 4. Press `Create pipeline`
 # MAGIC     1. Select `Create ETL Pipeline`
@@ -95,7 +97,7 @@
 # MAGIC
 # MAGIC 1. Go to `orgs/acme/domains/transport/projects/taxinyc/flows/prep/dltrevenue/revenue`
 # MAGIC 2. Study the code, and compare to the corresponding pyspark pipelines in `orgs/acme/domains/transport/projects/taxinyc/flows/prep/dltrevenue/`.
-# MAGIC 3. Go to the Delta Live Tables menu under Data Engineering on the left side menu
+# MAGIC 3. Go to the Pipelines menu under Data Engineering on the left side menu
 # MAGIC 4. Press `Create pipeline`
 # MAGIC     1. `Pipeline name`: `dltrevenue_[your username]_manual_test`
 # MAGIC     2. `Product edition`: `Advanced`

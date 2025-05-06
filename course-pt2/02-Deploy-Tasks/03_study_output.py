@@ -1,7 +1,9 @@
 # Databricks notebook source
 # MAGIC %md
 # MAGIC
-# MAGIC # Study output
+# MAGIC # OPTIONAL: Study output
+# MAGIC
+# MAGIC **If you did part 1 of the DataOps workshop you can skip this task if you prefer.**
 # MAGIC
 
 # COMMAND ----------

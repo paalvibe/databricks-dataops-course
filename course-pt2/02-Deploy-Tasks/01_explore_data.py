@@ -34,6 +34,12 @@
 
 # MAGIC %md
 # MAGIC
-# MAGIC ## Task: Explore data
+# MAGIC ## OPTIONAL: Task: Explore data
 # MAGIC
-# MAGIC Open a new tab, and go to `orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue/explore/taxinyc_revenue`. Connect to the Serverless cluster, and run through the cells.
+# MAGIC **If you already did DataOps workshop part 1, you can skip this task if you prefer.**
+# MAGIC
+# MAGIC Open a new tab, and navigate to the repo folder `orgs/acme/domains/transport/projects/taxinyc/flows/prep/revenue/explore/taxinyc_revenue`. Connect to the Serverless cluster, and run through the cells.
+
+# COMMAND ----------
+
+

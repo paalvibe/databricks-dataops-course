@@ -1,7 +1,9 @@
 # Databricks notebook source
 # MAGIC %md
 # MAGIC
-# MAGIC # Run pipeline
+# MAGIC # OPTIONAL: Run pipeline
+# MAGIC
+# MAGIC **If you did part 1 of the DataOps workshop you can skip this task if you prefer.**
 # MAGIC
 # MAGIC The notebooks for producing the output data has already been developed.
 # MAGIC Your next task is to run the notebooks yourself.

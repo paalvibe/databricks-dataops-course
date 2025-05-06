@@ -10,7 +10,7 @@
 # MAGIC
 # MAGIC ## Study: deployment.yml
 # MAGIC
-# MAGIC Look at `orgs/acme/domains/transport/projects/taxinyc/flows/prep/dltrevenue/deployment.yml`.
+# MAGIC Look at `orgs/acme/domains/transport/projects/taxinyc/flows/prep/dltrevenue/deployment.yml` in the repo.
 # MAGIC It defines the job which will run the pipeline.
 
 # COMMAND ----------
