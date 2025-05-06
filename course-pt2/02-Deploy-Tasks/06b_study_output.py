@@ -1,7 +1,7 @@
 # Databricks notebook source
 # MAGIC %md
 # MAGIC
-# MAGIC # Study output of the autodeployed DLT run
+# MAGIC # Find the output of the autodeployed DLT run
 # MAGIC
 
 # COMMAND ----------
